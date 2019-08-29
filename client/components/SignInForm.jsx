@@ -4,6 +4,9 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { styles } from '../utils'
 
+// SET WELCOME AND FORM UP THE PAGE
+// ADD A CATEGORY DROP DOWN INPUT
+
 export default function SignInForm () {
   // Using hooks we are no longer declaring a single object called state that holds our component’s state. Instead,
   // we are now splitting up state into multiple declarations.
@@ -29,7 +32,7 @@ export default function SignInForm () {
         <h1 style={{ paddingLeft: '10%' }}>Enspiral Dev Academy.</h1>
       </header>
       <form style={{ marginLeft: '10%' }}>
-        <br/><br/><br/>
+        <br/>
         <TextField
           style={{ paddingLeft: '6px' }}
           placeholder="Full name"
