@@ -1,0 +1,71 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.page-background {
+  background-color: #2C97AF;
+  /* overflow: hidden; */
+  display: block;
+  /* position: absolute; */
+  float: left;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  width: 50vw;
+  height: 100vh;
+  font-size: 2vw;
+}
+
+.page-text {
+  margin-top: 20vh;
+  padding-left: 5vw;
+}
+
+.arrow {
+  position: relative;
+  height: 8vh;
+  width: 4vw;
+  margin-top: 3vh;
+  margin-left: 2vw;
+}
+
+.form-inputs {
+  background-color: white;
+  border-radius: 1.2vw;
+  width: 40vw;
+}
+
+.button {
+ margin-left: 30vw;
+ padding: 0;
+ border-radius: 10vw;
+ background-color: white;
+ color: #2C97AF;
+ height: 6vh;
+ width: 10vw;
+ font-size: 2vw;
+ font-family: 'Roboto', sans-serif;
+font-weight: bold;
+}
+
+.main-page-button {
+  padding: 0;
+  position: relative;
+  border-radius: 10vw;
+  background-color: white;
+  color: #2C97AF;
+  height: 6vh;
+  width: 11vw;
+  font-size: 2vw;
+  margin-right: 4.5vw;
+  margin-top: 30vh;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.button-container-main {
+  margin-top: 30vh;
+  margin-left: 2.5vw;
+}
+
+

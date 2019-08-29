@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "sign-in-and-out-app",
   "version": "0.1.0",
-  "description": "React Redux using express",
+  "description": "Sign in/out App for EDA",
   "main": "server/index.js",
   "scripts": {
     "start": "webpack && node server",
@@ -30,6 +30,8 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "@material-ui/core": "^4.3.1",
+    "express": "^4.16.4",
+    "react-router-dom": "^5.0.1"
   }
 }

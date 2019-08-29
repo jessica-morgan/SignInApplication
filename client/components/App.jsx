@@ -1,9 +1,17 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
+import MainPage from './MainPage'
+import SignInForm from './SignInForm'
+import SignOutForm from './SignOutForm'
 
-const App = () => (
-  <div>
-    <h1>Howdy</h1>
-  </div>
-)
+const App = () => {
+  return (
+    <div>
+      <Route exact path="/" component={MainPage} />
+      <Route path="/signin" component={SignInForm} />
+      <Route path="/signout" component={SignOutForm} />
+    </div>
+  )
+}
 
 export default App
