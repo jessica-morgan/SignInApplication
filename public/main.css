@@ -1,21 +1,21 @@
 body {
   padding: 0;
   margin: 0;
-  background-image: 'background-image.jpg'
+  background: url('undraw_co-workers_ujs6.svg') no-repeat bottom left;
+  width: 50vw;
+  display: block;
+  background-size: 66.5vh;
 }
 
 .page-background {
-  background-color: #2C97AF, 0.3;
-  /* overflow: hidden; */
+  background-color: rgb(44,151,175, 0.6);
   display: block;
-  /* position: absolute; */
   float: left;
   font-family: 'Roboto', sans-serif;
   color: white;
   width: 50vw;
   height: 100vh;
   font-size: 2vw;
-  
 }
 
 .page-text {
