@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+
 import { styles } from '../utils'
+import BackArrow from './BackArrow'
 
 export default function SignInForm () {
   // Using hooks we are no longer declaring a single object called state that holds our component’s state. Instead,
@@ -20,10 +21,6 @@ export default function SignInForm () {
 
   return (
     <div className='page-background'>
-      <Link to='/'>
-        <img src='backarrow.png' className='arrow'>
-        </img>
-      </Link>
       <header>
         <h1 className='page-text'>Sign in at</h1>
         <h1 style={{ paddingLeft: '10%' }}>Enspiral Dev Academy.</h1>
@@ -60,6 +57,7 @@ export default function SignInForm () {
       <Button className={style.root}>Sign in</Button>
       {/* Type something into the input fields and click the button below- state variables will print in the console */}
       {/* <button onClick={() => { console.log(fullName, reason) }}>state</button> */}
+      <BackArrow />
     </div>
   )
 }
