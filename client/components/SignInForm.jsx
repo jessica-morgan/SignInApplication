@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle } from '../utils'
 import BackArrow from './BackArrow'
+import { Link } from 'react-router-dom'
 
 export default function SignInForm () {
   // Using hooks we are no longer declaring a single object called state that holds our component’s state. Instead,
@@ -76,6 +77,9 @@ export default function SignInForm () {
           <br/>
           <Button className={buttonStyle.root}>Sign in</Button>
         </form>
+        <Link style={{ textDecoration: 'none' }} to='/signout'>
+          <h3 className='sign-out-text'>or sign out instead</h3>
+        </Link>
         <BackArrow />
       </div>
     </div>

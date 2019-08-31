@@ -49,16 +49,6 @@ body {
   width: 40vw;
 }
 
-.form-drop-down {
- background-color: white;
-  border-radius: 1.2vw;
-  width: 40.1vw;
-}
-
-.button-container {
-  margin-top: 10vh;
-}
-
 .button {
  margin-left: 31vw;
  padding: 0;
@@ -71,6 +61,11 @@ body {
  font-family: 'Roboto', sans-serif;
 font-weight: bold;
 z-index: 3;
+}
+
+.button-container-main {
+  margin-top: 30vh;
+  margin-left: 2.5vw;
 }
 
 .main-page-button {
@@ -88,9 +83,14 @@ z-index: 3;
   font-weight: bold;
 }
 
-.button-container-main {
-  margin-top: 30vh;
-  margin-left: 2.5vw;
+.sign-out-text{
+  margin-top: -12vh;
+  padding-left: 5vw;
+  position: absolute;
+  font-size: 2.5vh;
+  z-index: 3;
+  bottom: 1.2vh;
+  left: 25vw;
+  text-decoration: none;
+  color: white;
 }
-
-
