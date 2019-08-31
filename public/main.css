@@ -4,12 +4,14 @@ body {
 }
 
 .page-background-image {
-  background: url('undraw_co-workers_ujs6.svg') no-repeat left;
+  background: url('undraw_co-workers_ujs6.svg') no-repeat bottom left;
   display: block;
-  background-size: 50%;
+  background-size: 100%;
   z-index: -1;
-  /* opacity: 0.5; */
-  position: relative;
+  /* position: relative; */
+  position: absolute;
+  bottom:0px;
+  width: 50vw;
 }
 
 .page-background {
@@ -21,13 +23,15 @@ body {
   width: 50vw;
   height: 100vh;
   font-size: 2vw;
-  z-index: 1;
+  z-index: -1;
   position: absolute;
 }
 
 .page-text {
-  margin-top: 8vh;
+  margin-top: -17vh;
   padding-left: 5vw;
+  position: absolute;
+  z-index: 1;
 }
 
 .arrow {
@@ -36,6 +40,7 @@ body {
   width: 4vw;
   margin-top: 3vh;
   margin-left: 2vw;
+  z-index: 2;
 }
 
 .form-inputs {
@@ -50,6 +55,10 @@ body {
   width: 40vw;
 }
 
+.button-container {
+  margin-top: 10vh;
+}
+
 .button {
  margin-left: 30vw;
  padding: 0;
@@ -61,6 +70,7 @@ body {
  font-size: 2vw;
  font-family: 'Roboto', sans-serif;
 font-weight: bold;
+z-index: 3;
 }
 
 .main-page-button {

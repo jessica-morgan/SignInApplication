@@ -31,10 +31,10 @@ export default function SignInForm () {
     <div className='page-background'>
       <div className="page-background-image">
         <header>
-          <h1 className='page-text'>Sign in at</h1>
-          <h1 style={{ paddingLeft: '10%' }}>Enspiral Dev Academy.</h1>
+          <h1 className='page-text'>Sign in at Enspiral Dev Academy.</h1>
+          {/* <h1 style={{ paddingLeft: '10%' }}></h1> */}
         </header>
-        <form style={{ marginLeft: '10%' }}>
+        <form style={{ marginLeft: '10%', paddingBottom: '22vh' }}>
           <br/>
           <TextField
             style={{ paddingLeft: '6px' }}
@@ -79,12 +79,13 @@ export default function SignInForm () {
               <MenuItem value={30}>Thirty</MenuItem>
             </Select>
           </FormControl>
+
+          <br/>
+        
+          {/* <div className="button-container"> */}
+          <Button className={style.root}>Sign in</Button>
         </form>
-        <br/>
-        {/* on click send new date object to get time of sign out */}
-        <Button className={style.root}>Sign in</Button>
-        {/* Type something into the input fields and click the button below- state variables will print in the console */}
-        {/* <button onClick={() => { console.log(fullName, reason) }}>state</button> */}
+        {/* </div> */}
         <Link to='/'>
           <img src='backarrow.png' className='arrow'>
           </img>
