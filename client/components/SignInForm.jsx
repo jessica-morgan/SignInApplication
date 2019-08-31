@@ -15,9 +15,9 @@ export default function SignInForm () {
   // the name of the state variable we’re modifying.
   // We’re basically declaring a state variable and a function to allow us to modify the state variable later.
   // The empty string in the useState call is the initial value of fullName and can be set to any required value.
-  const [fullName, setFullName] = useState('')
-  const [reason, setReason] = useState('')
-  const [email, setEmail] = useState('')
+  const [fullName, setFullName] = useState('name')
+  const [email, setEmail] = useState('email')
+  const [reason, setReason] = useState('reason')
   const buttonMargin = ButtonMargin()
   const buttonStyle = signInButtonStyles()
 
