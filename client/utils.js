@@ -1,4 +1,4 @@
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles, createMuiTheme } from '@material-ui/core/styles'
 import InputBase from '@material-ui/core/InputBase'
 
 const useStyles = makeStyles({
@@ -54,7 +54,20 @@ const CustomDropDown = withStyles(theme => ({
     fontSize: '1.3vw',
     fontFamily: 'Roboto, sans-serif',
     width: '37vw',
-    height: '3.5vh'
+    height: '3.5vh',
+    paddingLeft: '4px'
+
+  },
+  '&:focus': {
+    borderRadius: '1.2vw',
+    position: 'relative',
+    backgroundColor: 'white',
+    border: '1.2vw',
+    fontSize: '1.3vw',
+    fontFamily: 'Roboto, sans-serif',
+    width: '38.6vw',
+    height: '3.5vh',
+    paddingLeft: '4px'
   }
 }))(InputBase)
 
@@ -75,9 +88,52 @@ const CustomInput = withStyles(theme => ({
   }
 }))(InputBase)
 
+const menuItemStyle = makeStyles({
+  root: {
+    color: 'grey',
+    fontSize: '2vh',
+    fontFamily: 'Roboto, sans-serif',
+    marginBottom: '1vh',
+    paddingLeft: '6px',
+    marginLeft: '6px'
+  },
+  select: {
+    borderRadius: '1.2vw',
+    position: 'relative',
+    backgroundColor: 'white',
+    border: '1.2vw',
+    fontSize: '1.3vw',
+    fontFamily: 'Roboto, sans-serif',
+    width: '38.6vw',
+    height: '3.5vh',
+    paddingLeft: '4px'
+  }
+})
+
+const selectStyle = createMuiTheme({
+  overrides: {
+    MuiSelect: {
+      select: {
+        '&:focus': {
+          borderRadius: '1.2vw',
+          position: 'relative',
+          backgroundColor: 'white',
+          border: '1.2vw',
+          fontSize: '1.3vw',
+          fontFamily: 'Roboto, sans-serif',
+          height: '3.5vh',
+          paddingLeft: '4px'
+        }
+      }
+    }
+  }
+})
+
 module.exports = {
   useStyles: useStyles,
   signInButtonStyles: signInButtonStyles,
   CustomDropDown: CustomDropDown,
-  CustomInput: CustomInput
+  CustomInput: CustomInput,
+  menuItemStyle: menuItemStyle,
+  selectStyle: selectStyle
 }
