@@ -1,4 +1,5 @@
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import InputBase from '@material-ui/core/InputBase'
 
 const useStyles = makeStyles({
   root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
   }
 })
 
-const styles = makeStyles({
+const signInButtonStyles = makeStyles({
   root: {
     background: 'white',
     border: 0,
@@ -29,7 +30,7 @@ const styles = makeStyles({
     fontFamily: 'Roboto, sans-serif',
     fontSize: '1.5vw',
     fontWeight: 'bold',
-    marginLeft: '30.5vw',
+    marginLeft: '31.5vw',
     marginTop: '4vh',
     height: '5vh',
     width: '9vw',
@@ -41,7 +42,36 @@ const styles = makeStyles({
   }
 })
 
+const CustomDropDown = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: theme.spacing(3)
+    },
+    fontSize: '2vw',
+    color: 'rgb(161, 161, 161)'
+  },
+  input: {
+    borderRadius: '1.2vw',
+    position: 'relative',
+    backgroundColor: 'white',
+    border: '1.2vw',
+    fontSize: '1.3vw',
+    fontFamily: 'Roboto, sans-serif',
+    width: '38.6vw',
+    height: '3.5vh'
+  }
+}))(InputBase)
+
+const ButtonMargin = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  }
+}))
+
 module.exports = {
   useStyles: useStyles,
-  styles: styles
+  signInButtonStyles: signInButtonStyles,
+  CustomDropDown: CustomDropDown,
+  ButtonMargin: ButtonMargin
 }

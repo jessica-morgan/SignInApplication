@@ -1,16 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField'
-// import Input from '@material-ui/core/Input'
-import FilledInput from '@material-ui/core/FilledInput'
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
+import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
-import { styles } from '../utils'
-
-// ADD A CATEGORY DROP DOWN INPUT
+import { signInButtonStyles, CustomDropDown, ButtonMargin } from '../utils'
 
 export default function SignInForm () {
   // Using hooks we are no longer declaring a single object called state that holds our component’s state. Instead,
@@ -24,21 +18,23 @@ export default function SignInForm () {
   const [fullName, setFullName] = useState('')
   const [reason, setReason] = useState('')
   const [email, setEmail] = useState('')
-
-  const style = styles()
+  const buttonMargin = ButtonMargin()
+  const buttonStyle = signInButtonStyles()
 
   return (
-    <div className='page-background'>
-      <div className="page-background-image">
+    <div className='page-background-half'>
+      <div className="page-background-half-image">
         <header>
-          <h1 className='page-text'>Sign in at Enspiral Dev Academy.</h1>
-          {/* <h1 style={{ paddingLeft: '10%' }}></h1> */}
+          <h1 className='page-text'>Sign in at
+            <br/>
+          Enspiral Dev Academy.</h1>
         </header>
-        <form style={{ marginLeft: '10%', paddingBottom: '22vh' }}>
+        <br/>
+        <form style={{ marginLeft: '10%', paddingBottom: '18vh' }}>
           <br/>
           <TextField
             style={{ paddingLeft: '6px' }}
-            placeholder="Name"
+            placeholder="name"
             InputProps={{ disableUnderline: true }}
             className="form-inputs"
             type='text'
@@ -61,31 +57,25 @@ export default function SignInForm () {
             required
           />
           <br/><br/>
-          <FormControl variant="filled" className='form-drop-down'>
-            <InputLabel>
-          Reason for visit
-            </InputLabel>
-            <Select
+
+          <FormControl className={buttonMargin.margin}>
+            <NativeSelect
               value={reason}
               onChange={e => setReason(e.target.value)}
-              input={<FilledInput name="reason"
-                required />}
+              input={<CustomDropDown name="reason" />}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={'interview'}>Interview</MenuItem>
-              <MenuItem value={''}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
+              <option>reason for visit</option>
+              <option value={'interview'}>Interview</option>
+              <option value={'id verification'}>ID verification</option>
+              <option value={'day in the life'}>Day in the life</option>
+              <option value={'meeting'}>Meeting</option>
+              <option value={'meet up'}>Meet up</option>
+              <option value={'other'}>Other</option>
+            </NativeSelect>
           </FormControl>
-
           <br/>
-        
-          {/* <div className="button-container"> */}
-          <Button className={style.root}>Sign in</Button>
+          <Button className={buttonStyle.root}>Sign in</Button>
         </form>
-        {/* </div> */}
         <Link to='/'>
           <img src='backarrow.png' className='arrow'>
           </img>

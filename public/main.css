@@ -3,18 +3,17 @@ body {
   margin: 0;
 }
 
-.page-background-image {
+.page-background-half-image {
   background: url('undraw_co-workers_ujs6.svg') no-repeat bottom left;
   display: block;
   background-size: 100%;
   z-index: -1;
-  /* position: relative; */
   position: absolute;
   bottom:0px;
   width: 50vw;
 }
 
-.page-background {
+.page-background-half {
   background-color: rgb(44,151,175, 0.6);
   display: block;
   float: left;
@@ -22,13 +21,13 @@ body {
   color: white;
   width: 50vw;
   height: 100vh;
-  font-size: 2vw;
+  font-size: 1.7vw;
   z-index: -1;
   position: absolute;
 }
 
 .page-text {
-  margin-top: -17vh;
+  margin-top: -12vh;
   padding-left: 5vw;
   position: absolute;
   z-index: 1;
@@ -52,7 +51,7 @@ body {
 .form-drop-down {
  background-color: white;
   border-radius: 1.2vw;
-  width: 40vw;
+  width: 40.1vw;
 }
 
 .button-container {
@@ -60,7 +59,7 @@ body {
 }
 
 .button {
- margin-left: 30vw;
+ margin-left: 31vw;
  padding: 0;
  border-radius: 10vw;
  background-color: white;
