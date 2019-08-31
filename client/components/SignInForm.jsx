@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField'
 import FormControl from '@material-ui/core/FormControl'
 import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
 import { signInButtonStyles, CustomDropDown, ButtonMargin } from '../utils'
+import BackArrow from './BackArrow'
 
 export default function SignInForm () {
   // Using hooks we are no longer declaring a single object called state that holds our component’s state. Instead,
@@ -76,10 +76,7 @@ export default function SignInForm () {
           <br/>
           <Button className={buttonStyle.root}>Sign in</Button>
         </form>
-        <Link to='/'>
-          <img src='backarrow.png' className='arrow'>
-          </img>
-        </Link>
+        <BackArrow />
       </div>
     </div>
   )
