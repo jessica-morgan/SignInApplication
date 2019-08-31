@@ -8411,7 +8411,7 @@ var signInButtonStyles = (0, _styles.makeStyles)({
     fontFamily: 'Roboto, sans-serif',
     fontSize: '1.5vw',
     fontWeight: 'bold',
-    marginLeft: '31.5vw',
+    marginLeft: '30vw',
     marginTop: '4vh',
     height: '5vh',
     width: '9vw',
@@ -8426,10 +8426,24 @@ var signInButtonStyles = (0, _styles.makeStyles)({
 var CustomDropDown = (0, _styles.withStyles)(function (theme) {
   return {
     root: {
-      'label + &': {
-        marginTop: theme.spacing(3)
-      },
-      fontSize: '2vw',
+      color: 'rgb(161, 161, 161)'
+    },
+    input: {
+      borderRadius: '1.2vw',
+      position: 'relative',
+      backgroundColor: 'white',
+      border: '1.2vw',
+      fontSize: '1.3vw',
+      fontFamily: 'Roboto, sans-serif',
+      width: '37vw',
+      height: '3.5vh'
+    }
+  };
+})(_InputBase2.default);
+
+var CustomInput = (0, _styles.withStyles)(function (theme) {
+  return {
+    root: {
       color: 'rgb(161, 161, 161)'
     },
     input: {
@@ -8440,25 +8454,17 @@ var CustomDropDown = (0, _styles.withStyles)(function (theme) {
       fontSize: '1.3vw',
       fontFamily: 'Roboto, sans-serif',
       width: '38.6vw',
-      height: '3.5vh'
+      height: '3.5vh',
+      paddingLeft: '4px'
     }
   };
 })(_InputBase2.default);
-
-var ButtonMargin = (0, _styles.makeStyles)(function (theme) {
-  return {
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap'
-    }
-  };
-});
 
 module.exports = {
   useStyles: useStyles,
   signInButtonStyles: signInButtonStyles,
   CustomDropDown: CustomDropDown,
-  ButtonMargin: ButtonMargin
+  CustomInput: CustomInput
 };
 
 /***/ }),
@@ -34956,10 +34962,6 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TextField = __webpack_require__(54);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
 var _FormControl = __webpack_require__(70);
 
 var _FormControl2 = _interopRequireDefault(_FormControl);
@@ -35003,7 +35005,6 @@ function SignInForm() {
       reason = _useState6[0],
       setReason = _useState6[1];
 
-  var buttonMargin = (0, _utils.ButtonMargin)();
   var buttonStyle = (0, _utils.signInButtonStyles)();
 
   return _react2.default.createElement(
@@ -35028,11 +35029,9 @@ function SignInForm() {
         'form',
         { style: { marginLeft: '10%', paddingBottom: '18vh' } },
         _react2.default.createElement('br', null),
-        _react2.default.createElement(_TextField2.default, {
-          style: { paddingLeft: '6px' },
-          placeholder: 'name',
+        _react2.default.createElement(_utils.CustomInput, {
+          placeholder: ' name',
           InputProps: { disableUnderline: true },
-          className: 'form-inputs',
           type: 'text',
           name: 'fullName',
           value: fullName
@@ -35044,11 +35043,9 @@ function SignInForm() {
         }),
         _react2.default.createElement('br', null),
         _react2.default.createElement('br', null),
-        _react2.default.createElement(_TextField2.default, {
-          style: { paddingLeft: '6px' },
-          placeholder: 'email',
+        _react2.default.createElement(_utils.CustomInput, {
+          placeholder: ' email',
           InputProps: { disableUnderline: true },
-          className: 'form-inputs',
           type: 'text',
           name: 'email',
           value: email,
@@ -35061,7 +35058,7 @@ function SignInForm() {
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           _FormControl2.default,
-          { className: buttonMargin.margin },
+          null,
           _react2.default.createElement(
             _NativeSelect2.default,
             {

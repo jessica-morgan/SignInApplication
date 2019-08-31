@@ -42,6 +42,7 @@ body {
   z-index: 2;
 }
 
+/* now using CustomInput for sign in text fields- find the CustomInput function in utils */
 .form-inputs {
   background-color: white;
   border-radius: 1.2vw;

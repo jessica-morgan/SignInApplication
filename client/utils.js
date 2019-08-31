@@ -30,7 +30,7 @@ const signInButtonStyles = makeStyles({
     fontFamily: 'Roboto, sans-serif',
     fontSize: '1.5vw',
     fontWeight: 'bold',
-    marginLeft: '31.5vw',
+    marginLeft: '30vw',
     marginTop: '4vh',
     height: '5vh',
     width: '9vw',
@@ -44,10 +44,22 @@ const signInButtonStyles = makeStyles({
 
 const CustomDropDown = withStyles(theme => ({
   root: {
-    'label + &': {
-      marginTop: theme.spacing(3)
-    },
-    fontSize: '2vw',
+    color: 'rgb(161, 161, 161)'
+  },
+  input: {
+    borderRadius: '1.2vw',
+    position: 'relative',
+    backgroundColor: 'white',
+    border: '1.2vw',
+    fontSize: '1.3vw',
+    fontFamily: 'Roboto, sans-serif',
+    width: '37vw',
+    height: '3.5vh'
+  }
+}))(InputBase)
+
+const CustomInput = withStyles(theme => ({
+  root: {
     color: 'rgb(161, 161, 161)'
   },
   input: {
@@ -58,20 +70,14 @@ const CustomDropDown = withStyles(theme => ({
     fontSize: '1.3vw',
     fontFamily: 'Roboto, sans-serif',
     width: '38.6vw',
-    height: '3.5vh'
+    height: '3.5vh',
+    paddingLeft: '4px'
   }
 }))(InputBase)
-
-const ButtonMargin = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  }
-}))
 
 module.exports = {
   useStyles: useStyles,
   signInButtonStyles: signInButtonStyles,
   CustomDropDown: CustomDropDown,
-  ButtonMargin: ButtonMargin
+  CustomInput: CustomInput
 }

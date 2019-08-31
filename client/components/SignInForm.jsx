@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import TextField from '@material-ui/core/TextField'
 import FormControl from '@material-ui/core/FormControl'
 import NativeSelect from '@material-ui/core/NativeSelect'
 import Button from '@material-ui/core/Button'
-import { signInButtonStyles, CustomDropDown, ButtonMargin } from '../utils'
+import { signInButtonStyles, CustomDropDown, CustomInput } from '../utils'
 import BackArrow from './BackArrow'
 
 export default function SignInForm () {
@@ -18,7 +17,6 @@ export default function SignInForm () {
   const [fullName, setFullName] = useState('name')
   const [email, setEmail] = useState('email')
   const [reason, setReason] = useState('reason')
-  const buttonMargin = ButtonMargin()
   const buttonStyle = signInButtonStyles()
 
   return (
@@ -32,11 +30,9 @@ export default function SignInForm () {
         <br/>
         <form style={{ marginLeft: '10%', paddingBottom: '18vh' }}>
           <br/>
-          <TextField
-            style={{ paddingLeft: '6px' }}
-            placeholder="name"
+          <CustomInput
+            placeholder=" name"
             InputProps={{ disableUnderline: true }}
-            className="form-inputs"
             type='text'
             name='fullName'
             value={fullName}
@@ -45,11 +41,9 @@ export default function SignInForm () {
             required
           />
           <br/><br/>
-          <TextField
-            style={{ paddingLeft: '6px' }}
-            placeholder="email"
+          <CustomInput
+            placeholder=" email"
             InputProps={{ disableUnderline: true }}
-            className="form-inputs"
             type='text'
             name='email'
             value={email}
@@ -58,7 +52,7 @@ export default function SignInForm () {
           />
           <br/><br/>
 
-          <FormControl className={buttonMargin.margin}>
+          <FormControl>
             <NativeSelect
               value={reason}
               onChange={e => setReason(e.target.value)}
