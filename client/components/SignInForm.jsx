@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField'
+// import Input from '@material-ui/core/Input'
+import FilledInput from '@material-ui/core/FilledInput'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
 import { styles } from '../utils'
 
-// SET WELCOME AND FORM UP THE PAGE
 // ADD A CATEGORY DROP DOWN INPUT
 
 export default function SignInForm () {
@@ -18,51 +23,73 @@ export default function SignInForm () {
   // The empty string in the useState call is the initial value of fullName and can be set to any required value.
   const [fullName, setFullName] = useState('')
   const [reason, setReason] = useState('')
+  const [email, setEmail] = useState('')
 
   const style = styles()
 
   return (
     <div className='page-background'>
-      <Link to='/'>
-        <img src='backarrow.png' className='arrow'>
-        </img>
-      </Link>
-      <header>
-        <h1 className='page-text'>Sign in at</h1>
-        <h1 style={{ paddingLeft: '10%' }}>Enspiral Dev Academy.</h1>
-      </header>
-      <form style={{ marginLeft: '10%' }}>
+      <div className="page-background-image">
+        <header>
+          <h1 className='page-text'>Sign in at</h1>
+          <h1 style={{ paddingLeft: '10%' }}>Enspiral Dev Academy.</h1>
+        </header>
+        <form style={{ marginLeft: '10%' }}>
+          <br/>
+          <TextField
+            style={{ paddingLeft: '6px' }}
+            placeholder="Name"
+            InputProps={{ disableUnderline: true }}
+            className="form-inputs"
+            type='text'
+            name='fullName'
+            value={fullName}
+            // dont need to write event handler functions when using hooks
+            onChange={e => setFullName(e.target.value)}
+            required
+          />
+          <br/><br/>
+          <TextField
+            style={{ paddingLeft: '6px' }}
+            placeholder="email"
+            InputProps={{ disableUnderline: true }}
+            className="form-inputs"
+            type='text'
+            name='email'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+          <br/><br/>
+          <FormControl variant="filled" className='form-drop-down'>
+            <InputLabel>
+          Reason for visit
+            </InputLabel>
+            <Select
+              value={reason}
+              onChange={e => setReason(e.target.value)}
+              input={<FilledInput name="reason"
+                required />}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={'interview'}>Interview</MenuItem>
+              <MenuItem value={''}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
+        </form>
         <br/>
-        <TextField
-          style={{ paddingLeft: '6px' }}
-          placeholder="Full name"
-          InputProps={{ disableUnderline: true }}
-          className="form-inputs"
-          type='text'
-          name='fullName'
-          value={fullName}
-          // dont need to write event handler functions when using hooks
-          onChange={e => setFullName(e.target.value)}
-          required
-        />
-        <br/><br/>
-        <TextField
-          style={{ paddingLeft: '6px' }}
-          placeholder="Reason for visit"
-          InputProps={{ disableUnderline: true }}
-          className="form-inputs"
-          type='text'
-          name='reason'
-          value={reason}
-          onChange={e => setReason(e.target.value)}
-          required
-        />
-      </form>
-      <br/>
-      {/* on click send new date object to get time of sign out */}
-      <Button className={style.root}>Sign in</Button>
-      {/* Type something into the input fields and click the button below- state variables will print in the console */}
-      {/* <button onClick={() => { console.log(fullName, reason) }}>state</button> */}
+        {/* on click send new date object to get time of sign out */}
+        <Button className={style.root}>Sign in</Button>
+        {/* Type something into the input fields and click the button below- state variables will print in the console */}
+        {/* <button onClick={() => { console.log(fullName, reason) }}>state</button> */}
+        <Link to='/'>
+          <img src='backarrow.png' className='arrow'>
+          </img>
+        </Link>
+      </div>
     </div>
   )
 }
