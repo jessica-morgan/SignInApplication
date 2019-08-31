@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import FormControl from '@material-ui/core/FormControl'
-import NativeSelect from '@material-ui/core/NativeSelect'
+import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
-import { signInButtonStyles, CustomDropDown, CustomInput } from '../utils'
+import MenuItem from '@material-ui/core/MenuItem'
+import { MuiThemeProvider } from '@material-ui/core/styles'
+import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle } from '../utils'
 import BackArrow from './BackArrow'
 
 export default function SignInForm () {
@@ -18,6 +20,8 @@ export default function SignInForm () {
   const [email, setEmail] = useState('email')
   const [reason, setReason] = useState('reason')
   const buttonStyle = signInButtonStyles()
+  const menuStyles = menuItemStyle()
+  // const selectStyles = selectStyle()
 
   return (
     <div className='page-background-half'>
@@ -35,7 +39,6 @@ export default function SignInForm () {
             InputProps={{ disableUnderline: true }}
             type='text'
             name='fullName'
-            value={fullName}
             // dont need to write event handler functions when using hooks
             onChange={e => setFullName(e.target.value)}
             required
@@ -46,26 +49,29 @@ export default function SignInForm () {
             InputProps={{ disableUnderline: true }}
             type='text'
             name='email'
-            value={email}
             onChange={e => setEmail(e.target.value)}
             required
           />
           <br/><br/>
 
           <FormControl>
-            <NativeSelect
-              value={reason}
-              onChange={e => setReason(e.target.value)}
-              input={<CustomDropDown name="reason" />}
-            >
-              <option>reason for visit</option>
-              <option value={'interview'}>Interview</option>
-              <option value={'id verification'}>ID verification</option>
-              <option value={'day in the life'}>Day in the life</option>
-              <option value={'meeting'}>Meeting</option>
-              <option value={'meet up'}>Meet up</option>
-              <option value={'other'}>Other</option>
-            </NativeSelect>
+            <MuiThemeProvider theme={selectStyle}>
+              <Select
+                className={selectStyle}
+                value={reason}
+                onChange={e => setReason(e.target.value)}
+                input={<CustomDropDown name="reason"
+                />}
+
+              >
+                <MenuItem className={menuStyles.root} value={'interview'}>Interview</MenuItem>
+                <MenuItem className={menuStyles.root}value={'id verification'}>ID verification</MenuItem>
+                <MenuItem className={menuStyles.root} value={'day in the life'}>Day in the life</MenuItem>
+                <MenuItem className={menuStyles.root} value={'meeting'}>Meeting</MenuItem>
+                <MenuItem className={menuStyles.root}value={'meet up'}>Meet up</MenuItem>
+                <MenuItem className={menuStyles.root} value={'other'}>Other</MenuItem>
+              </Select>
+            </MuiThemeProvider>
           </FormControl>
           <br/>
           <Button className={buttonStyle.root}>Sign in</Button>
