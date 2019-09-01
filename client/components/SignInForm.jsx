@@ -22,7 +22,6 @@ export default function SignInForm () {
   const [reason, setReason] = useState('reason')
   const buttonStyle = signInButtonStyles()
   const menuStyles = menuItemStyle()
-  // const selectStyles = selectStyle()
 
   return (
     <div className='page-background-half'>

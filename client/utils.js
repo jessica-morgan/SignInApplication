@@ -30,7 +30,7 @@ const signInButtonStyles = makeStyles({
     fontFamily: 'Roboto, sans-serif',
     fontSize: '1.5vw',
     fontWeight: 'bold',
-    marginLeft: '30vw',
+    marginLeft: '30.5vw',
     marginTop: '4vh',
     height: '5vh',
     width: '9vw',
@@ -55,8 +55,9 @@ const CustomDropDown = withStyles(theme => ({
     fontFamily: 'Roboto, sans-serif',
     width: '37vw',
     height: '3.5vh',
-    paddingLeft: '4px'
-
+    paddingLeft: '4px',
+    paddingTop: '10px',
+    paddingBottom: '0px'
   },
   '&:focus': {
     borderRadius: '1.2vw',
@@ -82,7 +83,7 @@ const CustomInput = withStyles(theme => ({
     border: '1.2vw',
     fontSize: '1.3vw',
     fontFamily: 'Roboto, sans-serif',
-    width: '38.6vw',
+    width: '39vw',
     height: '3.5vh',
     paddingLeft: '4px'
   }
@@ -104,7 +105,7 @@ const menuItemStyle = makeStyles({
     border: '1.2vw',
     fontSize: '1.3vw',
     fontFamily: 'Roboto, sans-serif',
-    width: '38.6vw',
+    width: '39vw',
     height: '3.5vh',
     paddingLeft: '4px'
   }
