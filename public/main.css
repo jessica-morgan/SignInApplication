@@ -3,7 +3,31 @@ body {
   margin: 0;
 }
 
-.page-background-half-image {
+.page-background-full {
+  background-color: rgb(44,151,175, 0.6);
+  display: block;
+  float: left;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  width: 100%;
+  height: 100%;
+  font-size: 1.7vw;
+  z-index: -1;
+  position: absolute;
+}
+
+.sign-in-success-image {
+  background: url('undraw_community_8nwl.svg') no-repeat bottom;
+  display: block;
+  background-size: 100%;
+  z-index: 1;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50%;
+}
+
+.sign-in-form-image {
   background: url('undraw_co-workers_ujs6.svg') no-repeat bottom left;
   display: block;
   background-size: 100%;
@@ -26,12 +50,29 @@ body {
   position: absolute;
 }
 
-.page-text {
+.sign-in-page-text {
   margin-top: -12vh;
   padding-left: 5vw;
   position: absolute;
   z-index: 1;
 }
+
+.sign-in-success-page-text-h1 {
+  font-size: 4.5vw;
+  margin-top: -25vh;
+  padding-left: 5.4vw;
+  position: absolute;
+  z-index: 2;
+}
+
+.sign-in-success-page-text-h2 {
+  font-size: 4vh;
+  margin-top: -12vh;
+  padding-left: 8vw;
+  position: absolute;
+  z-index: 2;
+}
+
 
 .arrow {
   position: relative;

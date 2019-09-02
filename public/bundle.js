@@ -34819,15 +34819,19 @@ var _SignOutForm = __webpack_require__(241);
 
 var _SignOutForm2 = _interopRequireDefault(_SignOutForm);
 
+var _SignInSuccess = __webpack_require__(255);
+
+var _SignInSuccess2 = _interopRequireDefault(_SignInSuccess);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import MainPage from './MainPage'
 var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _SignInForm2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/signout', component: _SignOutForm2.default })
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/signout', component: _SignOutForm2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/signinsuccess', component: _SignInSuccess2.default })
   );
 };
 
@@ -34917,7 +34921,7 @@ function SignInForm() {
         null,
         _react2.default.createElement(
           'h1',
-          { className: 'page-text' },
+          { className: 'sign-in-page-text' },
           'Sign in at',
           _react2.default.createElement('br', null),
           'Enspiral Dev Academy.'
@@ -49071,6 +49075,50 @@ process.env.NODE_ENV !== "production" ? FormHelperText.propTypes = {
   name: 'MuiFormHelperText'
 })(FormHelperText));
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SignInSuccess;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _BackArrow = __webpack_require__(85);
+
+var _BackArrow2 = _interopRequireDefault(_BackArrow);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SignInSuccess() {
+  return _react2.default.createElement(
+    'div',
+    { className: 'page-background-full' },
+    _react2.default.createElement(
+      'div',
+      { className: 'sign-in-success-image' },
+      _react2.default.createElement(
+        'h1',
+        { className: 'sign-in-success-page-text-h1' },
+        'Thank you for visiting Enspiral Dev Academy'
+      ),
+      _react2.default.createElement(
+        'h2',
+        { className: 'sign-in-success-page-text-h2' },
+        'Please remember to sign out once your visit with us had ended'
+      ),
+      _react2.default.createElement(_BackArrow2.default, null)
+    )
+  );
+}
 
 /***/ })
 /******/ ]);
