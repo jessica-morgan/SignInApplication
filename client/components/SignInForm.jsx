@@ -25,7 +25,7 @@ export default function SignInForm () {
 
   return (
     <div className='page-background-half'>
-      <div className="page-background-half-image">
+      <div className="sign-in-form-image">
         <header>
           <h1 className='sign-in-page-text'>Sign in at
             <br/>
