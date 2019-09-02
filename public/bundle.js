@@ -34915,7 +34915,7 @@ function SignInForm() {
     { className: 'page-background-half' },
     _react2.default.createElement(
       'div',
-      { className: 'page-background-half-image' },
+      { className: 'sign-in-form-image' },
       _react2.default.createElement(
         'header',
         null,
@@ -49115,7 +49115,11 @@ function SignInSuccess() {
         { className: 'sign-in-success-page-text-h2' },
         'Please remember to sign out once your visit with us had ended'
       ),
-      _react2.default.createElement(_BackArrow2.default, null)
+      _react2.default.createElement(
+        'div',
+        { style: { marginTop: '38vh' } },
+        _react2.default.createElement(_BackArrow2.default, null)
+      )
     )
   );
 }
