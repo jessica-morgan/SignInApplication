@@ -25,9 +25,9 @@ export default function SignInForm () {
 
   return (
     <div className='page-background-half'>
-      <div className="page-background-half-image">
+      <div className="sign-in-form-image">
         <header>
-          <h1 className='page-text'>Sign in at
+          <h1 className='sign-in-page-text'>Sign in at
             <br/>
           Enspiral Dev Academy.</h1>
         </header>
@@ -74,6 +74,7 @@ export default function SignInForm () {
             </MuiThemeProvider>
           </FormControl>
           <br/>
+          {/* should link to /signinsuccess provided all fields have been filled */}
           <Button className={buttonStyle.root}>Sign in</Button>
         </form>
         <Link style={{ textDecoration: 'none' }} to='/signout'>
