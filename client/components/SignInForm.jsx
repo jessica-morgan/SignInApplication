@@ -27,7 +27,7 @@ export default function SignInForm () {
     <div className='page-background-half'>
       <div className="page-background-half-image">
         <header>
-          <h1 className='page-text'>Sign in at
+          <h1 className='sign-in-page-text'>Sign in at
             <br/>
           Enspiral Dev Academy.</h1>
         </header>
