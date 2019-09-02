@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
-import { CustomInput, signInButtonStyles } from '../utils'
+import { CustomInput, signOutButtonStyles } from '../utils'
 import BackArrow from './BackArrow'
 
 export default function SignOutForm () {
   const [email, setEmail] = useState('')
-  const buttonStyle = signInButtonStyles()
+  const buttonStyle = signOutButtonStyles()
 
   return (
     <div className='page-background-half'>
@@ -15,7 +15,7 @@ export default function SignOutForm () {
             <br/>Enspiral Dev Academy.</h1>
         </header>
         <br/>
-        <form style={{ marginLeft: '10%', marginBottom: '0vh' }}>
+        <form style={{ marginLeft: '10%', marginBottom: '1vh' }}>
           <br/><br/><br/>
           <CustomInput
             placeholder="email"
@@ -28,7 +28,7 @@ export default function SignOutForm () {
         </form>
         <br/>
         {/* on click send new date object to get time of sign out */}
-        <div style={{ marginBottom: '27vh', marginLeft: '5vw' }}>
+        <div style={{ marginBottom: '26vh', marginLeft: '5vw' }}>
           <Button className={buttonStyle.root}>Sign out</Button>
         </div>
         <BackArrow />
