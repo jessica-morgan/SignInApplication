@@ -74,6 +74,7 @@ export default function SignInForm () {
             </MuiThemeProvider>
           </FormControl>
           <br/>
+          {/* should link to /signinsuccess provided all fields have been filled */}
           <Button className={buttonStyle.root}>Sign in</Button>
         </form>
         <Link style={{ textDecoration: 'none' }} to='/signout'>
