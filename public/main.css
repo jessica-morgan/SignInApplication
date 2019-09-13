@@ -27,6 +27,17 @@ body {
   height: 50%;
 }
 
+.sign-out-success-image {
+  background: url('undraw_friends_online_klj6.svg') no-repeat bottom;
+  display: block;
+  background-size: 60%;
+  z-index: 1;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50%;
+}
+
 .sign-in-form-image {
   background: url('undraw_co-workers_ujs6.svg') no-repeat bottom left;
   display: block;
@@ -83,6 +94,22 @@ body {
 }
 
 .sign-in-success-page-text-h2 {
+  font-size: 4vh;
+  margin-top: -12vh;
+  padding-left: 8vw;
+  position: absolute;
+  z-index: 2;
+}
+
+.sign-out-success-page-text-h1 {
+  font-size: 4.5vw;
+  margin-top: -25vh;
+  padding-left: 5.4vw;
+  position: absolute;
+  z-index: 2;
+}
+
+.sign-out-success-page-text-h2 {
   font-size: 4vh;
   margin-top: -12vh;
   padding-left: 8vw;
