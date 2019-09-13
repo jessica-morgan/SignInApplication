@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
-
 import { CustomInput, signOutButtonStyles } from '../utils'
 import BackArrow from './BackArrow'
 
 export default function SignOutForm () {
   const [email, setEmail] = useState('')
-
   const buttonStyle = signOutButtonStyles()
 
   return (
