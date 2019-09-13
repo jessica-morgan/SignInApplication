@@ -37,6 +37,16 @@ body {
   width: 50vw;
 }
 
+.sign-out-form-image {
+  background: url('undraw_web_developer_p3e5.svg') no-repeat bottom left;
+  display: block;
+  background-size: 100%;
+  z-index: -1;
+  position: absolute;
+  bottom:0px;
+  width: 50vw;
+}
+
 .page-background-half {
   background-color: rgb(44,151,175, 0.6);
   display: block;
@@ -52,6 +62,13 @@ body {
 
 .sign-in-page-text {
   margin-top: -12vh;
+  padding-left: 5vw;
+  position: absolute;
+  z-index: 1;
+}
+
+.sign-out-page-text {
+  margin-top: -9vh;
   padding-left: 5vw;
   position: absolute;
   z-index: 1;

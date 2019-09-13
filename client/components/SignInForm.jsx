@@ -35,7 +35,7 @@ export default function SignInForm () {
         <form style={{ marginLeft: '10%', paddingBottom: '18vh' }}>
           <br/>
           <CustomInput
-            placeholder=" name"
+            placeholder="name"
             InputProps={{ disableUnderline: true }}
             type='text'
             name='fullName'
@@ -45,7 +45,7 @@ export default function SignInForm () {
           />
           <br/><br/>
           <CustomInput
-            placeholder=" email"
+            placeholder="email"
             InputProps={{ disableUnderline: true }}
             type='text'
             name='email'
