@@ -35006,8 +35006,7 @@ function SignInForm() {
           { className: 'sign-out-text' },
           'or sign out instead'
         )
-      ),
-      _react2.default.createElement(_BackArrow2.default, null)
+      )
     )
   );
 }

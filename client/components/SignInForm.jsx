@@ -80,7 +80,6 @@ export default function SignInForm () {
         <Link style={{ textDecoration: 'none' }} to='/signout'>
           <h3 className='sign-out-text'>or sign out instead</h3>
         </Link>
-        <BackArrow />
       </div>
     </div>
   )
