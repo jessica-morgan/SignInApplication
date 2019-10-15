@@ -2,8 +2,8 @@ const express = require('express')
 const db = require('../db/db')
 const router = express.Router()
 
-// gets all visitors info
-router.get('/visitors', (req, res) => {
+// gets all visitors
+router.get('/allVisitors', (req, res) => {
   db.getAllVisitors()
     .then(allVisitors => {
       res.json(allVisitors)
@@ -29,8 +29,7 @@ router.post('/signIn', (req, res) => {
     name: req.body.name,
     email: req.body.email,
     reason: req.body.reason,
-    sign_in_time: req.body.sign_in_time,
-    sign_out_time: req.body.sign_out_time
+    sign_in_time: req.body.sign_in_time
   }
   db.newVisitor(visitor)
     .then(visitorInfo => {

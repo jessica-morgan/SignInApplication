@@ -19,9 +19,10 @@ export default function SignInForm () {
   const [fullName, setFullName] = useState('name')
   const [email, setEmail] = useState('email')
   const [reason, setReason] = useState('reason')
+  const [signInTime, setSignInTime] = useState('signInTime')
   const buttonStyle = signInButtonStyles()
   const menuStyles = menuItemStyle()
-  
+
   return (
     <div className='page-background-half'>
       <div className="sign-in-form-image">
@@ -74,6 +75,7 @@ export default function SignInForm () {
           </FormControl>
           <br/>
           {/* should link to /signinsuccess provided all fields have been filled */}
+          {/* send new date object onClick along with fullName, email and reason */}
           <Button className={buttonStyle.root}>Sign in</Button>
         </form>
         <Link style={{ textDecoration: 'none' }} to='/signout'>
