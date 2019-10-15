@@ -11,7 +11,7 @@ function getAllVisitors (db = connection) {
 // gets a particular user by email
 function getVisitorByEmail (email, db = connection) {
   return db('visitors')
-    .where(email, 'email')
+    .where('visitors.email', email)
     .select()
 }
 

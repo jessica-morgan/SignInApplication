@@ -2,10 +2,8 @@ const express = require('express')
 const db = require('../db/db')
 const router = express.Router()
 
-router.use(express.json())
-
 // gets all visitors info
-router.get('/', (req, res) => {
+router.get('/visitors', (req, res) => {
   db.getAllVisitors()
     .then(allVisitors => {
       res.json(allVisitors)
@@ -15,8 +13,9 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/visitor', (req, res) => {
-  db.getVisitorByEmail()
+router.get('/visitor/:email', (req, res) => {
+  const email = req.params.email
+  db.getVisitorByEmail(email)
     .then(visitor => {
       res.json(visitor)
     })
@@ -52,3 +51,5 @@ router.post('/signOut', (req, res) => {
       res.status(500).send(err)
     })
 })
+
+module.exports = router
