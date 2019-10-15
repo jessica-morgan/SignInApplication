@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button'
 import MenuItem from '@material-ui/core/MenuItem'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle } from '../utils'
-import BackArrow from './BackArrow'
 import { Link } from 'react-router-dom'
 
 export default function SignInForm () {
@@ -22,7 +21,7 @@ export default function SignInForm () {
   const [reason, setReason] = useState('reason')
   const buttonStyle = signInButtonStyles()
   const menuStyles = menuItemStyle()
-
+  
   return (
     <div className='page-background-half'>
       <div className="sign-in-form-image">
