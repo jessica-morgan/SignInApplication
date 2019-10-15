@@ -28,11 +28,11 @@ function newVisitor (visitor, db = connection) {
 }
 
 // posts timestamp to sign_out_time for a visitor
-function visitorSignOut (email, timestamp, db = connection) {
+function visitorSignOut (email, timeStamp, db = connection) {
   return db('visitors')
-    .where(email, 'email')
-    .insert({
-      sign_out_time: timestamp
+    .where('visitors.email', email)
+    .update({
+      sign_out_time: timeStamp
     })
 }
 

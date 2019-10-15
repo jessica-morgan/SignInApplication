@@ -43,7 +43,7 @@ router.post('/signIn', (req, res) => {
 
 router.post('/signOut', (req, res) => {
   const email = req.body.email
-  const timeStamp = req.body.time
+  const timeStamp = req.body.sign_out_time
   db.visitorSignOut(email, timeStamp)
     .then(signedOut => {
       res.json(signedOut)
