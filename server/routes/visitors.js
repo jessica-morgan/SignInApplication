@@ -26,10 +26,11 @@ router.get('/visitor/:email', (req, res) => {
 
 router.post('/signIn', (req, res) => {
   const visitor = {
-    name: req.params.name,
+    name: req.body.name,
     email: req.body.email,
     reason: req.body.reason,
-    sign_in_time: req.body.time
+    sign_in_time: req.body.sign_in_time,
+    sign_out_time: req.body.sign_out_time
   }
   db.newVisitor(visitor)
     .then(visitorInfo => {

@@ -23,7 +23,7 @@ function newVisitor (visitor, db = connection) {
       email: visitor.email,
       reason: visitor.reason,
       sign_in_time: visitor.sign_in_time,
-      sign_out_time: null
+      sign_out_time: visitor.sign_out_time
     })
 }
 
