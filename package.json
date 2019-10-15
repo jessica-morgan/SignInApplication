@@ -5,7 +5,12 @@
   "main": "server/index.js",
   "scripts": {
     "start": "webpack && node server",
-    "dev": "nodemon --watch server & webpack --watch"
+    "dev": "nodemon --watch server & webpack --watch",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "db:reset": "run-s db:delete db:migrate db:seed",
+    "db:migrate": "npm run knex migrate:latest",
+    "db:seed": "npm run knex seed:run",
+    "db:delete": "rm -f server/db/dev.sqlite3"
   },
   "author": "Jessica Morgan",
   "license": "ISC",
@@ -32,6 +37,8 @@
   "dependencies": {
     "@material-ui/core": "^4.3.1",
     "express": "^4.16.4",
-    "react-router-dom": "^5.0.1"
+    "knex": "^0.19.5",
+    "react-router-dom": "^5.0.1",
+    "sqlite3": "^4.1.0"
   }
 }
