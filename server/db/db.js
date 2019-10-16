@@ -15,6 +15,13 @@ function getVisitorByEmail (email, db = connection) {
     .select()
 }
 
+// get all unsigned out visitors
+function getAllUnsignedOutVisitors (db = connection) {
+  return db('visitors')
+    .whereNull('visitors.sign_out_time')
+    .select()
+}
+
 // posts new visitor information
 function newVisitor (visitor, db = connection) {
   return db('visitors')
@@ -39,5 +46,6 @@ module.exports = {
   getAllVisitors,
   getVisitorByEmail,
   newVisitor,
-  visitorSignOut
+  visitorSignOut,
+  getAllUnsignedOutVisitors
 }

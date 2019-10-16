@@ -24,6 +24,16 @@ router.get('/visitor/:email', (req, res) => {
     })
 })
 
+router.get('/unsignedOut', (req, res) => {
+  db.getAllUnsignedOutVisitors()
+    .then(visitor => {
+      res.json(visitor)
+    })
+    .catch(err => {
+      res.status(500).send(err)
+    })
+})
+
 router.post('/signIn', (req, res) => {
   const visitor = {
     name: req.body.name,

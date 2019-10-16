@@ -22,8 +22,19 @@ export function getVisitorByEmailApi (email) {
     })
 }
 
+// gets all unsigned out visitors from the last 24 hours
+export function getAllUnsignedOutVisitorsApi () {
+  return request
+    .get(`${url}/unsignedOut`)
+    .then(res => res.body)
+    .catch(err => {
+      if (err) throw Error('Cannot get visitors')
+    })
+}
+
 // posts a new visitor
-export function newVisitorApi (fullName, email, reason, signInTime) {
+export function newVisitorApi (fullName, email, reason) {
+  const signInTime = new Date()
   return request
     .post(`${url}/signIn`)
     .send({
