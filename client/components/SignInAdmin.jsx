@@ -9,6 +9,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles'
 
 import { signInButtonStyles, CustomInput, selectStyle } from '../utils'
+import signInAdmin from '../api/admin'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -42,6 +43,16 @@ export default function SignInAdmin () {
 
   const buttonStyle = signInButtonStyles()
   const classes = useStyles()
+
+  const handleSubmit = (e) => {
+    const user = {
+      email,
+      password
+    }
+    const goToHome = () => this.props.history.push('/')
+    signInAdmin(user, goToHome)
+    e.preventDefault()
+  }
 
   return (
     <div className='page-background-full'>
@@ -93,7 +104,10 @@ export default function SignInAdmin () {
           </FormControl>
           <br/>
           {/* should link to /signinsuccess provided all fields have been filled */}
-          <Button className={buttonStyle.root}>Sign in</Button>
+          <Button className={buttonStyle.root}
+            onClick={handleSubmit}>
+              Sign in
+          </Button>
         </form>
       </div>
     </div>
