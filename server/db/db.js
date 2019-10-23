@@ -19,7 +19,7 @@ function getVisitorByEmail (email, db = connection) {
 function getAllUnsignedOutVisitors (db = connection) {
   return db('visitors')
     .whereNull('visitors.sign_out_time')
-    .select()
+    .select('name', 'email', 'sign_in_time as signInTime', 'sign_out_time as signOutTime')
 }
 
 // posts new visitor information
