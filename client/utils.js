@@ -136,7 +136,8 @@ const signoutListContainer = makeStyles({
     marginLeft: '5vw',
     marginTop: 'auto',
     zIndex: 2,
-    height: '46vh'
+    background: 'rgb(255,255,255, 0.8)',
+    borderRadius: '1.5vw'
   }
 })
 
