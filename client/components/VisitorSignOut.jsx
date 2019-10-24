@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button'
-import { signOutButtonStyles } from '../utils'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import { signOutButtonStyles, signoutListItemStyle, signoutListContainer } from '../utils'
 import { getAllUnsignedOutVisitorsApi, visitorSignOutApi } from '../api'
 import { format } from 'date-fns'
 import LoadingIndicator from './LoadingIndicator'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
+import BackArrow from './BackArrow'
 
 export default function SignOutForm () {
   const [visitorList, setVisitorList] = useState('')
   const buttonStyle = signOutButtonStyles()
+  const listItemStyle = signoutListItemStyle()
+  const listContainer = signoutListContainer()
 
   useEffect(() => {
     const visitorsArray = []
@@ -22,26 +25,32 @@ export default function SignOutForm () {
       })
   }, [])
   if (visitorList) {
-    return <div>
-      {visitorList.visitorsArray[0].map(visitor => {
-        const dateNow = new Date()
-        const signedInAt = visitor.signInTime.substring(0, 21)
-        const newDate = Date.parse(signedInAt)
-        const formattedSignedInTime = format(newDate, 'HH:mm dd-MM-yy')
-        // style this
-        return <List key={visitor.email}>
-          <ListItem>
-            <p style={{ fontSize: '2vh' }} key={visitor.email}>{visitor.name} Signed in at: {formattedSignedInTime}</p>
-            <Button className={buttonStyle.root} onClick={() => visitorSignOutApi(visitor.email, dateNow)}>Sign out</Button>
-          </ListItem>
-        </List>
-
-        //     <div key={visitor.email}>
-        //       <p style={{ fontSize: '2vh' }} key={visitor.email}>{visitor.name} Signed in at: {formattedSignedInTime}</p>
-        //       <Button className={buttonStyle.root} onClick={() => visitorSignOutApi(visitor.email, dateNow)}>Sign out</Button>
-        //     </div>
-      })}
-      <div style={{ marginBottom: '26vh', marginLeft: '5vw' }}>
+    return <div className='page-background-half'>
+      <div className='sign-out-form-image'>
+        <header>
+          <h1 className='sign-out-page-text'>Thank you for visiting
+            <br/>Enspiral Dev Academy.</h1>
+        </header>
+        <div className={listContainer.root}>
+          <div>
+            {visitorList.visitorsArray[0].map(visitor => {
+              const dateNow = new Date()
+              const signedInAt = visitor.signInTime.substring(0, 21)
+              const newDate = Date.parse(signedInAt)
+              const formattedSignedInTime = format(newDate, 'dd-MM-yy HH:mm ')
+              // style this
+              return <List key={visitor.email}>
+                <ListItem className={listItemStyle.root}>
+                  {/* on click pop up sign out modal asking 'sign out name?' */}
+                  {/* if date is today display today and time, if date is yesterday display yesterday at time, else display date */}
+                  {visitor.name}  {formattedSignedInTime}
+                  {/* <Button className={buttonStyle.root} onClick={() => visitorSignOutApi(visitor.email, dateNow)}>Sign out</Button> */}
+                </ListItem>
+              </List>
+            })}
+          </div>
+        </div>
+        <BackArrow />
       </div>
     </div>
   } else {

@@ -29,12 +29,11 @@ const signOutButtonStyles = makeStyles({
     borderRadius: 9,
     color: '#2C97AF',
     fontFamily: 'Roboto, sans-serif',
-    fontSize: '1.5vw',
+    fontSize: '1.2vw',
     fontWeight: 'bold',
-    marginLeft: '30.5vw',
     marginTop: '-1vh',
-    height: '5vh',
-    width: '9vw',
+    height: '4vh',
+    width: '7vw',
     textTransform: 'none',
     '&:hover': {
       backgroundColor: 'white',
@@ -131,11 +130,34 @@ const selectStyle = createMuiTheme({
   }
 })
 
+const signoutListContainer = makeStyles({
+  root: {
+    width: '34.5vw',
+    marginLeft: '5vw',
+    marginTop: 'auto',
+    zIndex: 2,
+    height: '46vh'
+  }
+})
+
+const signoutListItemStyle = makeStyles({
+  root: {
+    color: 'rgb(44,151,175)',
+    fontSize: '2vh',
+    fontFamily: 'Roboto, sans-serif',
+    background: 'rgb(255,255,255)',
+    zIndex: 3,
+    borderRadius: '1vw'
+  }
+})
+
 module.exports = {
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
   CustomDropDown: CustomDropDown,
   CustomInput: CustomInput,
   menuItemStyle: menuItemStyle,
-  selectStyle: selectStyle
+  selectStyle: selectStyle,
+  signoutListItemStyle: signoutListItemStyle,
+  signoutListContainer: signoutListContainer
 }
