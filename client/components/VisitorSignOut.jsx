@@ -1,37 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import ListItemText from '@material-ui/core/ListItemText'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 import { signOutButtonStyles, signoutListItemStyle, signoutListContainer } from '../utils'
 import { getAllUnsignedOutVisitorsApi, visitorSignOutApi } from '../api'
-import { format } from 'date-fns'
+import { format, isToday, isYesterday } from 'date-fns'
 import LoadingIndicator from './LoadingIndicator'
 import BackArrow from './BackArrow'
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    maxWidth: 752
-  },
-  demo: {
-    backgroundColor: theme.palette.background.paper
-  },
-  title: {
-    margin: theme.spacing(4, 0, 2)
-  }
-}))
+import SignOutButtonModal from './SignOutButtonModal'
 
 export default function SignOutForm () {
   const [visitorList, setVisitorList] = useState('')
-  const buttonStyle = signOutButtonStyles()
+  const [showButton, setShowButton] = useState('')
   const listItemStyle = signoutListItemStyle()
   const listContainer = signoutListContainer()
-  const classes = useStyles()
+
   useEffect(() => {
     const visitorsArray = []
     getAllUnsignedOutVisitorsApi()
@@ -49,14 +36,25 @@ export default function SignOutForm () {
           <h1 className='sign-out-page-text'>Thank you for visiting
             <br/>Enspiral Dev Academy.</h1>
         </header>
+        {showButton ? <SignOutButtonModal/> : <div></div>}
         <div className={listContainer.root}>
+
           {visitorList.visitorsArray[0].map(visitor => {
-            const dateNow = new Date()
             const signedInAt = visitor.signInTime.substring(0, 21)
             const newDate = Date.parse(signedInAt)
-            const formattedSignedInTime = format(newDate, 'dd-MM-yy HH:mm ')
+            const formattedSignedInDate = format(newDate, 'dd-MM-yy')
+            const formattedSignedInTime = format(newDate, 'HH:mm')
+            const checkedDate = () => {
+              if (isToday(newDate)) {
+                return 'today'
+              } else if (isYesterday(newDate)) {
+                return 'yesterday'
+              } else {
+                return formattedSignedInDate
+              }
+            }
 
-            return <div key={visitor.name} ><ListItem alignItems="flex-start">
+            return <div key={visitor.name} onClick={() => setShowButton(true)}><ListItem alignItems="flex-start">
               <ListItemAvatar>
                 <Avatar src="userIcon.png" />
               </ListItemAvatar>
@@ -68,11 +66,10 @@ export default function SignOutForm () {
                     <Typography
                       component="span"
                       variant="body2"
-                      className={classes.inline}
                       color="textPrimary"
                     >
                     </Typography>
-                    Signed in at: {formattedSignedInTime}
+                    {checkedDate()} at {formattedSignedInTime}
                   </React.Fragment>
                 }
               />

@@ -34,6 +34,7 @@ const signOutButtonStyles = makeStyles({
     marginTop: '-1vh',
     height: '4vh',
     width: '7vw',
+    zIndex: 5,
     textTransform: 'none',
     '&:hover': {
       backgroundColor: 'white',
@@ -137,7 +138,9 @@ const signoutListContainer = makeStyles({
     marginTop: 'auto',
     zIndex: 2,
     background: 'rgb(255,255,255, 0.8)',
-    borderRadius: '1.5vw'
+    borderRadius: '1.5vw',
+    overflow: 'scroll',
+    height: '42vh'
   }
 })
 
