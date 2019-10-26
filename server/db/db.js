@@ -20,6 +20,7 @@ function getAllUnsignedOutVisitors (db = connection) {
   return db('visitors')
     .whereNull('visitors.sign_out_time')
     .select('name', 'email', 'sign_in_time as signInTime', 'sign_out_time as signOutTime')
+    .orderBy('sign_in_time', 'desc')
 }
 
 // posts new visitor information
