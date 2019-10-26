@@ -54386,6 +54386,8 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(39);
+
 var _ListItem = __webpack_require__(123);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
@@ -54441,9 +54443,6 @@ function SignOutForm() {
       _useState6 = _slicedToArray(_useState5, 2),
       selectedVisitor = _useState6[0],
       setSelectedVisitor = _useState6[1];
-  // const [selectedVisitorDate, setVisitorDate] = useState('')
-  // const [selectedVisitorTime, setVisitorTime] = useState('')
-
 
   var listContainer = (0, _utils.signoutListContainer)();
   var buttonStyle = (0, _utils.signOutButtonStyles)();
@@ -54507,11 +54506,15 @@ function SignOutForm() {
                 selectedVisitor.time,
                 ' ',
                 _react2.default.createElement(
-                  _Button2.default,
-                  { className: buttonStyle.root, onClick: function onClick() {
-                      return (0, _visitors.visitorSignOutApi)(selectedVisitor.email, new Date());
-                    } },
-                  'Sign out'
+                  _reactRouterDom.Link,
+                  { to: '/', style: { textDecoration: 'none' } },
+                  _react2.default.createElement(
+                    _Button2.default,
+                    { className: buttonStyle.root, onClick: function onClick() {
+                        return (0, _visitors.visitorSignOutApi)(selectedVisitor.email, new Date());
+                      } },
+                    'Sign out'
+                  )
                 )
               )
             })

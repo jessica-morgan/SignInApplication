@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
@@ -15,8 +16,6 @@ export default function SignOutForm () {
   const [visitorList, setVisitorList] = useState('')
   const [showButton, setShowButton] = useState('')
   const [selectedVisitor, setSelectedVisitor] = useState('')
-  // const [selectedVisitorDate, setVisitorDate] = useState('')
-  // const [selectedVisitorTime, setVisitorTime] = useState('')
   const listContainer = signoutListContainer()
   const buttonStyle = signOutButtonStyles()
   const singleVisitor = singleVisitorSignOut()
@@ -57,13 +56,14 @@ export default function SignOutForm () {
                     color="textPrimary"
                   >
                   </Typography>
-                  {selectedVisitor.date} at {selectedVisitor.time} <Button className={buttonStyle.root} onClick={() => visitorSignOutApi(selectedVisitor.email, new Date())}>Sign out</Button>
+                  {selectedVisitor.date} at {selectedVisitor.time} <Link to='/' style={{ textDecoration: 'none' }}><Button className={buttonStyle.root} onClick={() => visitorSignOutApi(selectedVisitor.email, new Date())}>Sign out</Button></Link>
 
                 </React.Fragment>
               }
             />
           </ListItem>
         </React.Fragment>
+
           : <React.Fragment>
             <header>
               <h1 className='sign-out-page-text'>Sign out from
