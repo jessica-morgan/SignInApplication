@@ -24,22 +24,33 @@ const signInButtonStyles = makeStyles({
 
 const signOutButtonStyles = makeStyles({
   root: {
-    background: 'white',
+    background: '#2C97AF',
     border: 0,
     borderRadius: 9,
-    color: '#2C97AF',
+    color: 'white',
     fontFamily: 'Roboto, sans-serif',
-    fontSize: '1.2vw',
+    fontSize: '1.8vw',
     fontWeight: 'bold',
-    marginTop: '-1vh',
-    height: '4vh',
-    width: '7vw',
+    marginTop: '-6.8vh',
+    marginLeft: '15vw',
+    height: '7vh',
+    width: '10vw',
     zIndex: 5,
     textTransform: 'none',
     '&:hover': {
       backgroundColor: 'white',
       color: 'rgb(27, 111, 129)'
     }
+  }
+})
+
+const singleVisitorSignOut = makeStyles({
+  root: {
+    background: 'rgb(255,255,255, 0.8)',
+    borderRadius: '1.5vw',
+    width: '34.5vw',
+    marginLeft: '5vw',
+    marginBottom: '17.5vh'
   }
 })
 
@@ -144,24 +155,13 @@ const signoutListContainer = makeStyles({
   }
 })
 
-const signoutListItemStyle = makeStyles({
-  root: {
-    color: 'rgb(44,151,175)',
-    fontSize: '2vh',
-    fontFamily: 'Roboto, sans-serif',
-    background: 'rgb(255,255,255)',
-    zIndex: 3,
-    borderRadius: '1vw'
-  }
-})
-
 module.exports = {
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
+  singleVisitorSignOut: singleVisitorSignOut,
   CustomDropDown: CustomDropDown,
   CustomInput: CustomInput,
   menuItemStyle: menuItemStyle,
   selectStyle: selectStyle,
-  signoutListItemStyle: signoutListItemStyle,
   signoutListContainer: signoutListContainer
 }

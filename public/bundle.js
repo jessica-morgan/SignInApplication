@@ -4854,22 +4854,33 @@ var signInButtonStyles = (0, _styles.makeStyles)({
 
 var signOutButtonStyles = (0, _styles.makeStyles)({
   root: {
-    background: 'white',
+    background: '#2C97AF',
     border: 0,
     borderRadius: 9,
-    color: '#2C97AF',
+    color: 'white',
     fontFamily: 'Roboto, sans-serif',
-    fontSize: '1.2vw',
+    fontSize: '1.8vw',
     fontWeight: 'bold',
-    marginTop: '-1vh',
-    height: '4vh',
-    width: '7vw',
+    marginTop: '-6.8vh',
+    marginLeft: '15vw',
+    height: '7vh',
+    width: '10vw',
     zIndex: 5,
     textTransform: 'none',
     '&:hover': {
       backgroundColor: 'white',
       color: 'rgb(27, 111, 129)'
     }
+  }
+});
+
+var singleVisitorSignOut = (0, _styles.makeStyles)({
+  root: {
+    background: 'rgb(255,255,255, 0.8)',
+    borderRadius: '1.5vw',
+    width: '34.5vw',
+    marginLeft: '5vw',
+    marginBottom: '17.5vh'
   }
 });
 
@@ -4978,25 +4989,14 @@ var signoutListContainer = (0, _styles.makeStyles)({
   }
 });
 
-var signoutListItemStyle = (0, _styles.makeStyles)({
-  root: {
-    color: 'rgb(44,151,175)',
-    fontSize: '2vh',
-    fontFamily: 'Roboto, sans-serif',
-    background: 'rgb(255,255,255)',
-    zIndex: 3,
-    borderRadius: '1vw'
-  }
-});
-
 module.exports = {
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
+  singleVisitorSignOut: singleVisitorSignOut,
   CustomDropDown: CustomDropDown,
   CustomInput: CustomInput,
   menuItemStyle: menuItemStyle,
   selectStyle: selectStyle,
-  signoutListItemStyle: signoutListItemStyle,
   signoutListContainer: signoutListContainer
 };
 
@@ -9915,9 +9915,8 @@ function useTheme() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__List__ = __webpack_require__(306);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return __WEBPACK_IMPORTED_MODULE_0__List__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__List__["a"]; });
 
 
 /***/ }),
@@ -10080,84 +10079,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 124 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getAllVisitorsApi = getAllVisitorsApi;
-exports.getVisitorByEmailApi = getVisitorByEmailApi;
-exports.getAllUnsignedOutVisitorsApi = getAllUnsignedOutVisitorsApi;
-exports.newVisitorApi = newVisitorApi;
-exports.visitorSignOutApi = visitorSignOutApi;
-
-var _superagent = __webpack_require__(125);
-
-var _superagent2 = _interopRequireDefault(_superagent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var url = 'http://localhost:3000/visitors';
-
-// gets all visitors
-function getAllVisitorsApi() {
-  return _superagent2.default.get(url + '/allVisitors').then(function (res) {
-    return res.body;
-  }).catch(function (err) {
-    if (err) throw Error('Cannot get visitors');
-  });
-}
-
-// gets a visitor by email
-function getVisitorByEmailApi(email) {
-  return _superagent2.default.get(url + '/visitor/' + email).then(function (res) {
-    return res.body;
-  }).catch(function (err) {
-    if (err) throw Error('Cannot get visitor');
-  });
-}
-
-// gets all unsigned out visitors from the last 24 hours
-function getAllUnsignedOutVisitorsApi() {
-  return _superagent2.default.get(url + '/unsignedOut').then(function (res) {
-    return res.body;
-  }).catch(function (err) {
-    if (err) throw Error('Cannot get visitors');
-  });
-}
-
-// posts a new visitor
-function newVisitorApi(fullName, email, reason) {
-  var signInTime = new Date();
-  return _superagent2.default.post(url + '/signIn').send({
-    name: fullName,
-    email: email,
-    reason: reason,
-    sign_in_time: signInTime
-  }).then(function (res) {
-    return res.body;
-  }).catch(function (err) {
-    if (err) throw Error('Cannot add visitor');
-  });
-}
-
-// posts a visitors sign out time
-function visitorSignOutApi(email, signOutTime) {
-  return _superagent2.default.post(url + '/signOut').send({
-    email: email,
-    sign_out_time: signOutTime
-  }).then(function (res) {
-    return res.body;
-  }).catch(function (err) {
-    if (err) throw Error('Cannot sign out visitor');
-  });
-}
-
-/***/ }),
+/* 124 */,
 /* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40736,7 +40658,7 @@ var _utils = __webpack_require__(48);
 
 var _reactRouterDom = __webpack_require__(39);
 
-var _api = __webpack_require__(124);
+var _visitors = __webpack_require__(500);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40863,7 +40785,7 @@ function SignInForm() {
           _react2.default.createElement(
             _Button2.default,
             { className: buttonStyle.root, onClick: function onClick() {
-                return (0, _api.newVisitorApi)(fullName, email, reason);
+                return (0, _visitors.newVisitorApi)(fullName, email, reason);
               } },
             'Sign in'
           )
@@ -49180,7 +49102,7 @@ var MenuList = __WEBPACK_IMPORTED_MODULE_2_react___default.a.forwardRef(function
     listRef.current = __WEBPACK_IMPORTED_MODULE_4_react_dom___default.a.findDOMNode(instance);
   }, []);
   var handleRef = Object(__WEBPACK_IMPORTED_MODULE_8__utils_reactHelpers__["c" /* useForkRef */])(handleOwnRef, ref);
-  return __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__List__["default"], Object(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__["a" /* default */])({
+  return __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__List__["a" /* default */], Object(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__["a" /* default */])({
     role: "menu",
     ref: handleRef,
     className: className,
@@ -54464,10 +54386,6 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _List = __webpack_require__(117);
-
-var _List2 = _interopRequireDefault(_List);
-
 var _ListItem = __webpack_require__(123);
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
@@ -54488,13 +54406,13 @@ var _Typography = __webpack_require__(77);
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _Container = __webpack_require__(492);
+var _Button = __webpack_require__(75);
 
-var _Container2 = _interopRequireDefault(_Container);
+var _Button2 = _interopRequireDefault(_Button);
 
 var _utils = __webpack_require__(48);
 
-var _api = __webpack_require__(124);
+var _visitors = __webpack_require__(500);
 
 var _dateFns = __webpack_require__(346);
 
@@ -54505,10 +54423,6 @@ var _LoadingIndicator2 = _interopRequireDefault(_LoadingIndicator);
 var _BackArrow = __webpack_require__(89);
 
 var _BackArrow2 = _interopRequireDefault(_BackArrow);
-
-var _SignOutButtonModal = __webpack_require__(475);
-
-var _SignOutButtonModal2 = _interopRequireDefault(_SignOutButtonModal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54523,12 +54437,21 @@ function SignOutForm() {
       showButton = _useState4[0],
       setShowButton = _useState4[1];
 
-  var listItemStyle = (0, _utils.signoutListItemStyle)();
+  var _useState5 = (0, _react.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      selectedVisitor = _useState6[0],
+      setSelectedVisitor = _useState6[1];
+  // const [selectedVisitorDate, setVisitorDate] = useState('')
+  // const [selectedVisitorTime, setVisitorTime] = useState('')
+
+
   var listContainer = (0, _utils.signoutListContainer)();
+  var buttonStyle = (0, _utils.signOutButtonStyles)();
+  var singleVisitor = (0, _utils.singleVisitorSignOut)();
 
   (0, _react.useEffect)(function () {
     var visitorsArray = [];
-    (0, _api.getAllUnsignedOutVisitorsApi)().then(function (visitors) {
+    (0, _visitors.getAllUnsignedOutVisitorsApi)().then(function (visitors) {
       visitorsArray.push(visitors);
       setVisitorList({
         visitorsArray: visitorsArray
@@ -54542,68 +54465,122 @@ function SignOutForm() {
       _react2.default.createElement(
         'div',
         { className: 'sign-out-form-image' },
-        _react2.default.createElement(
-          'header',
+        showButton ? _react2.default.createElement(
+          _react2.default.Fragment,
           null,
           _react2.default.createElement(
-            'h1',
-            { className: 'sign-out-page-text' },
-            'Thank you for visiting',
-            _react2.default.createElement('br', null),
-            'Enspiral Dev Academy.'
-          )
-        ),
-        showButton ? _react2.default.createElement(_SignOutButtonModal2.default, null) : _react2.default.createElement('div', null),
-        _react2.default.createElement(
-          'div',
-          { className: listContainer.root },
-          visitorList.visitorsArray[0].map(function (visitor) {
-            var signedInAt = visitor.signInTime.substring(0, 21);
-            var newDate = Date.parse(signedInAt);
-            var formattedSignedInDate = (0, _dateFns.format)(newDate, 'dd-MM-yy');
-            var formattedSignedInTime = (0, _dateFns.format)(newDate, 'HH:mm');
-            var checkedDate = function checkedDate() {
-              if ((0, _dateFns.isToday)(newDate)) {
-                return 'today';
-              } else if ((0, _dateFns.isYesterday)(newDate)) {
-                return 'yesterday';
-              } else {
-                return formattedSignedInDate;
-              }
-            };
-
-            return _react2.default.createElement(
-              'div',
-              { key: visitor.name, onClick: function onClick() {
-                  return setShowButton(true);
-                } },
-              _react2.default.createElement(
-                _ListItem2.default,
-                { alignItems: 'flex-start' },
+            'header',
+            null,
+            _react2.default.createElement(
+              'h1',
+              { className: 'sign-out-page-text', style: { fontSize: '3.6vw' } },
+              'Thank you for visiting',
+              _react2.default.createElement('br', null),
+              'Enspiral Dev Academy,',
+              _react2.default.createElement('br', null),
+              'we hope to see you',
+              _react2.default.createElement('br', null),
+              'again soon'
+            )
+          ),
+          _react2.default.createElement(
+            _ListItem2.default,
+            { className: singleVisitor.root, alignItems: 'flex-start' },
+            _react2.default.createElement(
+              _ListItemAvatar2.default,
+              null,
+              _react2.default.createElement(_Avatar2.default, { src: 'userIcon.png' })
+            ),
+            _react2.default.createElement(_ListItemText2.default, {
+              style: { color: 'black' },
+              primary: selectedVisitor.name,
+              secondary: _react2.default.createElement(
+                _react2.default.Fragment,
+                null,
+                _react2.default.createElement(_Typography2.default, {
+                  component: 'span',
+                  variant: 'body2',
+                  color: 'textPrimary'
+                }),
+                selectedVisitor.date,
+                ' at ',
+                selectedVisitor.time,
+                ' ',
                 _react2.default.createElement(
-                  _ListItemAvatar2.default,
-                  null,
-                  _react2.default.createElement(_Avatar2.default, { src: 'userIcon.png' })
-                ),
-                _react2.default.createElement(_ListItemText2.default, {
-                  style: { color: 'black' },
-                  primary: visitor.name,
-                  secondary: _react2.default.createElement(
-                    _react2.default.Fragment,
-                    null,
-                    _react2.default.createElement(_Typography2.default, {
-                      component: 'span',
-                      variant: 'body2',
-                      color: 'textPrimary'
-                    }),
-                    checkedDate(),
-                    ' at ',
-                    formattedSignedInTime
-                  )
-                })
+                  _Button2.default,
+                  { className: buttonStyle.root, onClick: function onClick() {
+                      return (0, _visitors.visitorSignOutApi)(selectedVisitor.email, new Date());
+                    } },
+                  'Sign out'
+                )
               )
-            );
-          })
+            })
+          )
+        ) : _react2.default.createElement(
+          _react2.default.Fragment,
+          null,
+          _react2.default.createElement(
+            'header',
+            null,
+            _react2.default.createElement(
+              'h1',
+              { className: 'sign-out-page-text' },
+              'Sign out from',
+              _react2.default.createElement('br', null),
+              'Enspiral Dev Academy.'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: listContainer.root },
+            visitorList.visitorsArray[0].map(function (visitor) {
+              var signedInAt = visitor.signInTime.substring(0, 21);
+              var newDate = Date.parse(signedInAt);
+              var formattedSignedInDate = (0, _dateFns.format)(newDate, 'dd-MM-yy');
+              var formattedSignedInTime = (0, _dateFns.format)(newDate, 'HH:mm');
+              var checkedDate = function checkedDate() {
+                if ((0, _dateFns.isToday)(newDate)) {
+                  return 'today';
+                } else if ((0, _dateFns.isYesterday)(newDate)) {
+                  return 'yesterday';
+                } else {
+                  return formattedSignedInDate;
+                }
+              };
+
+              return _react2.default.createElement(
+                'div',
+                { key: visitor.name, onClick: function onClick() {
+                    setShowButton(true);setSelectedVisitor({ name: visitor.name, email: visitor.email, date: formattedSignedInDate, time: formattedSignedInTime });
+                  } },
+                _react2.default.createElement(
+                  _ListItem2.default,
+                  { alignItems: 'flex-start' },
+                  _react2.default.createElement(
+                    _ListItemAvatar2.default,
+                    null,
+                    _react2.default.createElement(_Avatar2.default, { src: 'userIcon.png' })
+                  ),
+                  _react2.default.createElement(_ListItemText2.default, {
+                    style: { color: 'black' },
+                    primary: visitor.name,
+                    secondary: _react2.default.createElement(
+                      _react2.default.Fragment,
+                      null,
+                      _react2.default.createElement(_Typography2.default, {
+                        component: 'span',
+                        variant: 'body2',
+                        color: 'textPrimary'
+                      }),
+                      checkedDate(),
+                      ' at ',
+                      formattedSignedInTime
+                    )
+                  })
+                )
+              );
+            })
+          )
         ),
         _react2.default.createElement(_BackArrow2.default, null)
       )
@@ -65546,40 +65523,7 @@ var LoadingIndicator = function LoadingIndicator() {
 exports.default = LoadingIndicator;
 
 /***/ }),
-/* 475 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = SignOutForm;
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Button = __webpack_require__(75);
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _utils = __webpack_require__(48);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function SignOutForm() {
-  var buttonStyle = (0, _utils.signOutButtonStyles)();
-
-  return _react2.default.createElement(
-    _Button2.default,
-    { className: buttonStyle },
-    'Sign out from Dev Academy'
-  );
-}
-
-/***/ }),
+/* 475 */,
 /* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66601,265 +66545,90 @@ function getToken() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38)))
 
 /***/ }),
-/* 492 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Container__ = __webpack_require__(493);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return __WEBPACK_IMPORTED_MODULE_0__Container__["a"]; });
 
 
-/***/ }),
-/* 493 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* unused harmony export styles */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_objectWithoutProperties__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prop_types__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_clsx__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styles__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils__ = __webpack_require__(494);
-
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  var _root;
-
-  return {
-    /* Styles applied to the root element. */
-    root: (_root = {
-      width: '100%',
-      marginLeft: 'auto',
-      boxSizing: 'border-box',
-      marginRight: 'auto',
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
-    }, Object(__WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__["a" /* default */])(_root, theme.breakpoints.up('sm'), {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3)
-    }), Object(__WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__["a" /* default */])(_root, theme.breakpoints.up('md'), {
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4)
-    }), _root),
-
-    /* Styles applied to the root element if `fixed={true}`. */
-    fixed: Object.keys(theme.breakpoints.values).reduce(function (acc, breakpoint) {
-      var value = theme.breakpoints.values[breakpoint];
-
-      if (value !== 0) {
-        acc[theme.breakpoints.up(breakpoint)] = {
-          maxWidth: value
-        };
-      }
-
-      return acc;
-    }, {}),
-
-    /* Styles applied to the root element if `maxWidth="xs"`. */
-    maxWidthXs: Object(__WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__["a" /* default */])({}, theme.breakpoints.up('xs'), {
-      maxWidth: Math.max(theme.breakpoints.values.xs, 444)
-    }),
-
-    /* Styles applied to the root element if `maxWidth="sm"`. */
-    maxWidthSm: Object(__WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__["a" /* default */])({}, theme.breakpoints.up('sm'), {
-      maxWidth: theme.breakpoints.values.sm
-    }),
-
-    /* Styles applied to the root element if `maxWidth="md"`. */
-    maxWidthMd: Object(__WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__["a" /* default */])({}, theme.breakpoints.up('md'), {
-      maxWidth: theme.breakpoints.values.md
-    }),
-
-    /* Styles applied to the root element if `maxWidth="lg"`. */
-    maxWidthLg: Object(__WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__["a" /* default */])({}, theme.breakpoints.up('lg'), {
-      maxWidth: theme.breakpoints.values.lg
-    }),
-
-    /* Styles applied to the root element if `maxWidth="xl"`. */
-    maxWidthXl: Object(__WEBPACK_IMPORTED_MODULE_2__babel_runtime_helpers_esm_defineProperty__["a" /* default */])({}, theme.breakpoints.up('xl'), {
-      maxWidth: theme.breakpoints.values.xl
-    })
-  };
-};
-var Container = __WEBPACK_IMPORTED_MODULE_3_react___default.a.forwardRef(function Container(props, ref) {
-  var classes = props.classes,
-      className = props.className,
-      _props$component = props.component,
-      Component = _props$component === void 0 ? 'div' : _props$component,
-      _props$fixed = props.fixed,
-      fixed = _props$fixed === void 0 ? false : _props$fixed,
-      _props$maxWidth = props.maxWidth,
-      maxWidth = _props$maxWidth === void 0 ? 'lg' : _props$maxWidth,
-      other = Object(__WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_esm_objectWithoutProperties__["a" /* default */])(props, ["classes", "className", "component", "fixed", "maxWidth"]);
-
-  return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(Component, Object(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_esm_extends__["a" /* default */])({
-    className: Object(__WEBPACK_IMPORTED_MODULE_5_clsx__["a" /* default */])(classes.root, className, fixed && classes.fixed, maxWidth !== false && classes["maxWidth".concat(Object(__WEBPACK_IMPORTED_MODULE_7__utils__["a" /* capitalize */])(String(maxWidth)))]),
-    ref: ref
-  }, other));
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-process.env.NODE_ENV !== "production" ? Container.propTypes = {
-  children: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.node.isRequired,
+exports.getAllVisitorsApi = getAllVisitorsApi;
+exports.getVisitorByEmailApi = getVisitorByEmailApi;
+exports.getAllUnsignedOutVisitorsApi = getAllUnsignedOutVisitorsApi;
+exports.newVisitorApi = newVisitorApi;
+exports.visitorSignOutApi = visitorSignOutApi;
 
-  /**
-   * Override or extend the styles applied to the component.
-   * See [CSS API](#css) below for more details.
-   */
-  classes: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.object.isRequired,
+var _superagent = __webpack_require__(125);
 
-  /**
-   * @ignore
-   */
-  className: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.string,
+var _superagent2 = _interopRequireDefault(_superagent);
 
-  /**
-   * The component used for the root node.
-   * Either a string to use a DOM element or a component.
-   */
-  component: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.elementType,
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  /**
-   * Set the max-width to match the min-width of the current breakpoint.
-   * This is useful if you'd prefer to design for a fixed set of sizes
-   * instead of trying to accommodate a fully fluid viewport.
-   * It's fluid by default.
-   */
-  fixed: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.bool,
+var url = 'http://localhost:3000/visitors';
 
-  /**
-   * Determine the max-width of the container.
-   * The container width grows with the size of the screen.
-   * Set to `false` to disable `maxWidth`.
-   */
-  maxWidth: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.oneOf(['xs', 'sm', 'md', 'lg', 'xl', false])
-} : void 0;
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_6__styles__["withStyles"])(styles, {
-  name: 'MuiContainer'
-})(Container));
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
-
-/***/ }),
-/* 494 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__deprecatedPropType__ = __webpack_require__(495);
-/* unused harmony reexport deprecatedPropType */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers__ = __webpack_require__(19);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__helpers__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reactHelpers__ = __webpack_require__(12);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__focusVisible__ = __webpack_require__(318);
-/* unused harmony reexport useIsFocusVisible */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ownerDocument__ = __webpack_require__(26);
-/* unused harmony reexport ownerDocument */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ownerWindow__ = __webpack_require__(108);
-/* unused harmony reexport ownerWindow */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__requirePropFactory__ = __webpack_require__(496);
-/* unused harmony reexport requirePropFactory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__unsupportedProp__ = __webpack_require__(497);
-/* unused harmony reexport unsupportedProp */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__useEventCallback__ = __webpack_require__(71);
-/* unused harmony reexport useEventCallback */
-
-
-
-
-
-
-
-
-
-
-/***/ }),
-/* 495 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {function deprecatedPropType(validator, reason) {
-  if (process.env.NODE_ENV === 'production') {
-    return function () {
-      return null;
-    };
-  }
-
-  return function (props, propName, componentName, location, propFullName) {
-    var componentNameSafe = componentName || '<<anonymous>>';
-    var propFullNameSafe = propFullName || propName;
-
-    if (typeof props[propName] !== 'undefined') {
-      return new Error("The ".concat(location, " `").concat(propFullNameSafe, "` of ") + "`".concat(componentNameSafe, "` is deprecated. ").concat(reason));
-    }
-
-    return null;
-  };
+// gets all visitors
+function getAllVisitorsApi() {
+  return _superagent2.default.get(url + '/allVisitors').then(function (res) {
+    return res.body;
+  }).catch(function (err) {
+    if (err) throw Error('Cannot get visitors');
+  });
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (deprecatedPropType);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
-
-/***/ }),
-/* 496 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {function requirePropFactory(componentNameInError) {
-  if (process.env.NODE_ENV === 'production') {
-    return function () {
-      return null;
-    };
-  }
-
-  var requireProp = function requireProp(requiredProp) {
-    return function (props, propName, componentName, location, propFullName) {
-      var propFullNameSafe = propFullName || propName;
-
-      if (typeof props[propName] !== 'undefined' && !props[requiredProp]) {
-        return new Error("The prop `".concat(propFullNameSafe, "` of ") + "`".concat(componentNameInError, "` must be used on `").concat(requiredProp, "`."));
-      }
-
-      return null;
-    };
-  };
-
-  return requireProp;
+// gets a visitor by email
+function getVisitorByEmailApi(email) {
+  return _superagent2.default.get(url + '/visitor/' + email).then(function (res) {
+    return res.body;
+  }).catch(function (err) {
+    if (err) throw Error('Cannot get visitor');
+  });
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (requirePropFactory);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
-
-/***/ }),
-/* 497 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {function unsupportedProp(props, propName, componentName, location, propFullName) {
-  if (process.env.NODE_ENV === 'production') {
-    return null;
-  }
-
-  var propFullNameSafe = propFullName || propName;
-
-  if (typeof props[propName] !== 'undefined') {
-    return new Error("The prop `".concat(propFullNameSafe, "` is not supported. Please remove it."));
-  }
-
-  return null;
+// gets all unsigned out visitors from the last 24 hours
+function getAllUnsignedOutVisitorsApi() {
+  return _superagent2.default.get(url + '/unsignedOut').then(function (res) {
+    return res.body;
+  }).catch(function (err) {
+    if (err) throw Error('Cannot get visitors');
+  });
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (unsupportedProp);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+// posts a new visitor
+function newVisitorApi(fullName, email, reason) {
+  var signInTime = new Date();
+  return _superagent2.default.post(url + '/signIn').send({
+    name: fullName,
+    email: email,
+    reason: reason,
+    sign_in_time: signInTime
+  }).then(function (res) {
+    return res.body;
+  }).catch(function (err) {
+    if (err) throw Error('Cannot add visitor');
+  });
+}
+
+// posts a visitors sign out time
+function visitorSignOutApi(email, signOutTime) {
+  return _superagent2.default.post(url + '/signOut').send({
+    email: email,
+    sign_out_time: signOutTime
+  }).then(function (res) {
+    return res.body;
+  }).catch(function (err) {
+    if (err) throw Error('Cannot sign out visitor');
+  });
+}
 
 /***/ })
 /******/ ]);
