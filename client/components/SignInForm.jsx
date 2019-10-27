@@ -4,7 +4,7 @@ import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
 import MenuItem from '@material-ui/core/MenuItem'
 import { MuiThemeProvider } from '@material-ui/core/styles'
-import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle, promoContainer } from '../utils'
+import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle } from '../utils'
 import { Link } from 'react-router-dom'
 import { newVisitorApi } from '../api/visitors'
 
@@ -14,7 +14,6 @@ export default function SignInForm () {
   const [reason, setReason] = useState('')
   const buttonStyle = signInButtonStyles()
   const menuStyles = menuItemStyle()
-  const promotionContainer = promoContainer()
 
   return (
     <div className='page-background-half'>
@@ -29,7 +28,6 @@ export default function SignInForm () {
           <br/>
           <CustomInput
             placeholder="name"
-            InputProps={{ disableUnderline: true }}
             type='text'
             name='fullName'
             onChange={e => setFullName(e.target.value)}
@@ -38,7 +36,6 @@ export default function SignInForm () {
           <br/><br/>
           <CustomInput
             placeholder="email"
-            InputProps={{ disableUnderline: true }}
             type='text'
             name='email'
             onChange={e => setEmail(e.target.value)}
@@ -49,7 +46,6 @@ export default function SignInForm () {
           <FormControl>
             <MuiThemeProvider theme={selectStyle}>
               <Select
-                className={selectStyle}
                 value={reason}
                 onChange={e => setReason(e.target.value)}
                 input={<CustomDropDown name="reason"
