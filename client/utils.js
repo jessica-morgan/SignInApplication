@@ -1,22 +1,6 @@
 import { makeStyles, withStyles, createMuiTheme } from '@material-ui/core/styles'
 import InputBase from '@material-ui/core/InputBase'
 
-const promoContainer = makeStyles({
-  root: {
-    display: 'block',
-    float: 'right',
-    fontFamily: 'Roboto, sans-serif',
-    color: 'white',
-    width: '-50vw',
-    height: '-100vh',
-    fontSize: '1.7vw',
-    zIndex: '1',
-    position: 'absolute',
-    marginLeft: '-50vw',
-    marginTop: '-100vh'
-  }
-})
-
 // sign out styles
 
 const signOutButtonStyles = makeStyles({
@@ -88,10 +72,8 @@ const signInButtonStyles = makeStyles({
 })
 
 const CustomDropDown = withStyles(theme => ({
-  root: {
-    color: 'rgb(161, 161, 161)'
-  },
   input: {
+    color: 'rgb(161, 161, 161)',
     borderRadius: '1.2vw',
     position: 'relative',
     backgroundColor: 'white',
@@ -103,25 +85,12 @@ const CustomDropDown = withStyles(theme => ({
     paddingLeft: '4px',
     paddingTop: '10px',
     paddingBottom: '0px'
-  },
-  '&:focus': {
-    borderRadius: '1.2vw',
-    position: 'relative',
-    backgroundColor: 'white',
-    border: '1.2vw',
-    fontSize: '1.3vw',
-    fontFamily: 'Roboto, sans-serif',
-    width: '38.6vw',
-    height: '3.5vh',
-    paddingLeft: '4px'
   }
 }))(InputBase)
 
 const CustomInput = withStyles(theme => ({
-  root: {
-    color: 'rgb(161, 161, 161)'
-  },
   input: {
+    color: 'rgb(161, 161, 161)',
     borderRadius: '1.2vw',
     position: 'relative',
     backgroundColor: 'white',
@@ -176,7 +145,6 @@ const selectStyle = createMuiTheme({
 })
 
 module.exports = {
-  promoContainer: promoContainer,
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
   singleVisitorSignOut: singleVisitorSignOut,

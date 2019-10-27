@@ -6239,22 +6239,6 @@ var _InputBase2 = _interopRequireDefault(_InputBase);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var promoContainer = (0, _styles.makeStyles)({
-  root: {
-    display: 'block',
-    float: 'right',
-    fontFamily: 'Roboto, sans-serif',
-    color: 'white',
-    width: '-50vw',
-    height: '-100vh',
-    fontSize: '1.7vw',
-    zIndex: '1',
-    position: 'absolute',
-    marginLeft: '-50vw',
-    marginTop: '-100vh'
-  }
-});
-
 // sign out styles
 
 var signOutButtonStyles = (0, _styles.makeStyles)({
@@ -6327,10 +6311,8 @@ var signInButtonStyles = (0, _styles.makeStyles)({
 
 var CustomDropDown = (0, _styles.withStyles)(function (theme) {
   return {
-    root: {
-      color: 'rgb(161, 161, 161)'
-    },
     input: {
+      color: 'rgb(161, 161, 161)',
       borderRadius: '1.2vw',
       position: 'relative',
       backgroundColor: 'white',
@@ -6342,27 +6324,14 @@ var CustomDropDown = (0, _styles.withStyles)(function (theme) {
       paddingLeft: '4px',
       paddingTop: '10px',
       paddingBottom: '0px'
-    },
-    '&:focus': {
-      borderRadius: '1.2vw',
-      position: 'relative',
-      backgroundColor: 'white',
-      border: '1.2vw',
-      fontSize: '1.3vw',
-      fontFamily: 'Roboto, sans-serif',
-      width: '38.6vw',
-      height: '3.5vh',
-      paddingLeft: '4px'
     }
   };
 })(_InputBase2.default);
 
 var CustomInput = (0, _styles.withStyles)(function (theme) {
   return {
-    root: {
-      color: 'rgb(161, 161, 161)'
-    },
     input: {
+      color: 'rgb(161, 161, 161)',
       borderRadius: '1.2vw',
       position: 'relative',
       backgroundColor: 'white',
@@ -6418,7 +6387,6 @@ var selectStyle = (0, _styles.createMuiTheme)({
 });
 
 module.exports = {
-  promoContainer: promoContainer,
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
   singleVisitorSignOut: singleVisitorSignOut,
@@ -40769,7 +40737,6 @@ function SignInForm() {
 
   var buttonStyle = (0, _utils.signInButtonStyles)();
   var menuStyles = (0, _utils.menuItemStyle)();
-  var promotionContainer = (0, _utils.promoContainer)();
 
   return _react2.default.createElement(
     'div',
@@ -40795,7 +40762,6 @@ function SignInForm() {
         _react2.default.createElement('br', null),
         _react2.default.createElement(_utils.CustomInput, {
           placeholder: 'name',
-          InputProps: { disableUnderline: true },
           type: 'text',
           name: 'fullName',
           onChange: function onChange(e) {
@@ -40807,7 +40773,6 @@ function SignInForm() {
         _react2.default.createElement('br', null),
         _react2.default.createElement(_utils.CustomInput, {
           placeholder: 'email',
-          InputProps: { disableUnderline: true },
           type: 'text',
           name: 'email',
           onChange: function onChange(e) {
@@ -40826,7 +40791,6 @@ function SignInForm() {
             _react2.default.createElement(
               _Select2.default,
               {
-                className: _utils.selectStyle,
                 value: reason,
                 onChange: function onChange(e) {
                   return setReason(e.target.value);
@@ -65662,7 +65626,7 @@ function SignInSuccess() {
       ),
       _react2.default.createElement(
         'h2',
-        { className: 'sign-in-success-page-text-h2' },
+        { className: 'sign-in-success-page-text-h2', style: { marginLeft: '-11vw' } },
         'Please remember to sign out once your visit with us had ended'
       ),
       _react2.default.createElement(
