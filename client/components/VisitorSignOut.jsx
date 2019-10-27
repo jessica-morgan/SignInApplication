@@ -56,7 +56,7 @@ export default function SignOutForm () {
                     color="textPrimary"
                   >
                   </Typography>
-                  {selectedVisitor.date} at {selectedVisitor.time} <Link to='/' style={{ textDecoration: 'none' }}><Button className={buttonStyle.root} onClick={() => visitorSignOutApi(selectedVisitor.email, new Date())}>Sign out</Button></Link>
+                  {selectedVisitor.date} at {selectedVisitor.time} <Link to='/signoutsuccess' style={{ textDecoration: 'none' }}><Button className={buttonStyle.root} onClick={() => visitorSignOutApi(selectedVisitor.email, new Date())}>Sign out</Button></Link>
 
                 </React.Fragment>
               }

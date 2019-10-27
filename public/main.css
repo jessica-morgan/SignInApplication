@@ -38,6 +38,30 @@ body {
   height: 50%;
 }
 
+.sign-in-success-page-text-h1 {
+  font-size: 4.5vw;
+  margin-top: -25vh;
+  padding-left: 5.4vw;
+  position: absolute;
+  z-index: 2;
+}
+
+.sign-out-success-page-text-h1 {
+  font-size: 4.5vw;
+  margin-top: -25vh;
+  padding-left: 5.4vw;
+  position: absolute;
+  z-index: 2;
+}
+
+.sign-out-success-page-text-h2 {
+  font-size: 4vh;
+  margin-top: -12vh;
+  padding-left: 8vw;
+  position: absolute;
+  z-index: 2;
+}
+
 .sign-out-success-image {
   background: url('undraw_friends_online_klj6.svg') no-repeat bottom;
   display: block;
@@ -47,6 +71,14 @@ body {
   bottom: 0px;
   width: 100%;
   height: 50%;
+}
+
+.sign-in-success-page-text-h2 {
+  font-size: 4vh;
+  margin-top: -12vh;
+  padding-left: 19vw;
+  position: absolute;
+  z-index: 2;
 }
 
 .sign-in-form-image {
@@ -69,6 +101,23 @@ body {
   width: 50vw;
 }
 
+.sign-out-page-text {
+  padding-left: 5vw;
+  z-index: 1;
+}
+
+.sign-out-text{
+  margin-top: -12vh;
+  padding-left: 5vw;
+  position: absolute;
+  font-size: 2.5vh;
+  z-index: 3;
+  bottom: 1.2vh;
+  left: 25vw;
+  text-decoration: none;
+  color: white;
+}
+
 .page-background-half {
   background-color: rgb(44,151,175, 0.6);
   display: block;
@@ -88,106 +137,6 @@ body {
   position: absolute;
   z-index: 1;
 }
-
-.sign-in-success-page-text-h1 {
-  font-size: 4.5vw;
-  margin-top: -25vh;
-  padding-left: 5.4vw;
-  position: absolute;
-  z-index: 2;
-}
-
-.sign-in-success-page-text-h2 {
-  font-size: 4vh;
-  margin-top: -12vh;
-  padding-left: 8vw;
-  position: absolute;
-  z-index: 2;
-}
-
-.sign-out-form-image {
-  background: url('undraw_web_developer_p3e5.svg') no-repeat bottom left;
-  display: block;
-  background-size: 100%;
-  z-index: -1;
-  position: absolute;
-  bottom:0px;
-  width: 50vw;
-}
-
-.sign-out-page-text {
-  padding-left: 5vw;
-  z-index: 1;
-}
-.sign-out-success-page-text-h1 {
-  font-size: 4.5vw;
-  margin-top: -25vh;
-  padding-left: 5.4vw;
-  position: absolute;
-  z-index: 2;
-}
-
-.sign-out-success-page-text-h2 {
-  font-size: 4vh;
-  margin-top: -12vh;
-  padding-left: 8vw;
-  position: absolute;
-  z-index: 2;
-}
-
-.sign-out-text{
-  margin-top: -12vh;
-  padding-left: 5vw;
-  position: absolute;
-  font-size: 2.5vh;
-  z-index: 3;
-  bottom: 1.2vh;
-  left: 25vw;
-  text-decoration: none;
-  color: white;
-}
-
-/* now using CustomInput for sign in text fields- find the CustomInput function in utils */
-.form-inputs {
-  background-color: white;
-  border-radius: 1.2vw;
-  width: 40vw;
-}
-
-.button {
- margin-left: 31vw;
- padding: 0;
- border-radius: 10vw;
- background-color: white;
- color: #2C97AF;
- height: 6vh;
- width: 10vw;
- font-size: 2vw;
- font-family: 'Roboto', sans-serif;
-font-weight: bold;
-z-index: 3;
-}
-
-.button-container-main {
-  margin-top: 30vh;
-  margin-left: 2.5vw;
-}
-
-.main-page-button {
-  padding: 0;
-  position: relative;
-  border-radius: 10vw;
-  background-color: white;
-  color: #2C97AF;
-  height: 6vh;
-  width: 11vw;
-  font-size: 2vw;
-  margin-right: 4.5vw;
-  margin-top: 30vh;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
-
 
 /* ADMIN SIGN IN / OUT */
 
