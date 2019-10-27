@@ -16,6 +16,29 @@ body {
   position: absolute;
 }
 
+.page-background-half {
+  background-color: rgb(44,151,175, 0.6);
+  display: block;
+  float: left;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  width: 50vw;
+  height: 100vh;
+  font-size: 1.7vw;
+  z-index: -1;
+  position: absolute;
+}
+
+.promo-image {
+    z-index: 4;
+    margin-left: 50vw;
+    margin-top: -100vh;
+    float: right;
+    position: absolute;
+    height: 100vh;
+    width: 50vw;
+}
+
 .arrow {
   position: relative;
   height: 8vh;
@@ -57,7 +80,7 @@ body {
 .sign-out-success-page-text-h2 {
   font-size: 4vh;
   margin-top: -12vh;
-  padding-left: 8vw;
+  padding-left: 17vw;
   position: absolute;
   z-index: 2;
 }
@@ -116,19 +139,6 @@ body {
   left: 25vw;
   text-decoration: none;
   color: white;
-}
-
-.page-background-half {
-  background-color: rgb(44,151,175, 0.6);
-  display: block;
-  float: left;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  width: 50vw;
-  height: 100vh;
-  font-size: 1.7vw;
-  z-index: -1;
-  position: absolute;
 }
 
 .sign-in-page-text {
