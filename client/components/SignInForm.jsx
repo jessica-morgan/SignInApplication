@@ -4,7 +4,7 @@ import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
 import MenuItem from '@material-ui/core/MenuItem'
 import { MuiThemeProvider } from '@material-ui/core/styles'
-import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle } from '../utils'
+import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle, promoContainer } from '../utils'
 import { Link } from 'react-router-dom'
 import { newVisitorApi } from '../api/visitors'
 
@@ -14,10 +14,11 @@ export default function SignInForm () {
   const [reason, setReason] = useState('')
   const buttonStyle = signInButtonStyles()
   const menuStyles = menuItemStyle()
+  const promotionContainer = promoContainer()
 
   return (
     <div className='page-background-half'>
-      <div className="sign-in-form-image">
+      <div className='sign-in-form-image'>
         <header>
           <h1 className='sign-in-page-text'>Sign in at
             <br/>
@@ -70,9 +71,11 @@ export default function SignInForm () {
             : <div style={{ height: '9vh' }}></div>
           }
         </form>
+
         <Link style={{ textDecoration: 'none' }} to='/signout'>
           <h3 className='sign-out-text'>or sign out instead</h3>
         </Link>
+        <img className='promo-image' src='deskRentalAd.png'/>
       </div>
     </div>
   )

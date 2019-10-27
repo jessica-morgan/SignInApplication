@@ -1,26 +1,23 @@
 import { makeStyles, withStyles, createMuiTheme } from '@material-ui/core/styles'
 import InputBase from '@material-ui/core/InputBase'
 
-const signInButtonStyles = makeStyles({
+const promoContainer = makeStyles({
   root: {
-    background: 'white',
-    border: 0,
-    borderRadius: 9,
-    color: '#2C97AF',
+    display: 'block',
+    float: 'right',
     fontFamily: 'Roboto, sans-serif',
-    fontSize: '1.5vw',
-    fontWeight: 'bold',
-    marginLeft: '30.5vw',
-    marginTop: '4vh',
-    height: '5vh',
-    width: '9vw',
-    textTransform: 'none',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: 'rgb(27, 111, 129)'
-    }
+    color: 'white',
+    width: '-50vw',
+    height: '-100vh',
+    fontSize: '1.7vw',
+    zIndex: '1',
+    position: 'absolute',
+    marginLeft: '-50vw',
+    marginTop: '-100vh'
   }
 })
+
+// sign out styles
 
 const signOutButtonStyles = makeStyles({
   root: {
@@ -51,6 +48,42 @@ const singleVisitorSignOut = makeStyles({
     width: '34.5vw',
     marginLeft: '5vw',
     marginBottom: '17.5vh'
+  }
+})
+
+const signoutListContainer = makeStyles({
+  root: {
+    width: '34.5vw',
+    marginLeft: '5vw',
+    marginTop: 'auto',
+    zIndex: 2,
+    background: 'rgb(255,255,255, 0.8)',
+    borderRadius: '1.5vw',
+    overflow: 'scroll',
+    height: '42vh'
+  }
+})
+
+// sign in styles
+
+const signInButtonStyles = makeStyles({
+  root: {
+    background: 'white',
+    border: 0,
+    borderRadius: 9,
+    color: '#2C97AF',
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '1.5vw',
+    fontWeight: 'bold',
+    marginLeft: '30.5vw',
+    marginTop: '4vh',
+    height: '5vh',
+    width: '9vw',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: 'rgb(27, 111, 129)'
+    }
   }
 })
 
@@ -142,20 +175,8 @@ const selectStyle = createMuiTheme({
   }
 })
 
-const signoutListContainer = makeStyles({
-  root: {
-    width: '34.5vw',
-    marginLeft: '5vw',
-    marginTop: 'auto',
-    zIndex: 2,
-    background: 'rgb(255,255,255, 0.8)',
-    borderRadius: '1.5vw',
-    overflow: 'scroll',
-    height: '42vh'
-  }
-})
-
 module.exports = {
+  promoContainer: promoContainer,
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
   singleVisitorSignOut: singleVisitorSignOut,

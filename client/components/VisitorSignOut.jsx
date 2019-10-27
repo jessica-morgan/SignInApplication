@@ -113,6 +113,7 @@ export default function SignOutForm () {
           </React.Fragment>
         }
         <BackArrow />
+        <img className='promo-image' src='deskRentalAd.png'/>
       </div>
     </div>
   } else {

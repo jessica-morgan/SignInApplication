@@ -6239,26 +6239,23 @@ var _InputBase2 = _interopRequireDefault(_InputBase);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var signInButtonStyles = (0, _styles.makeStyles)({
+var promoContainer = (0, _styles.makeStyles)({
   root: {
-    background: 'white',
-    border: 0,
-    borderRadius: 9,
-    color: '#2C97AF',
+    display: 'block',
+    float: 'right',
     fontFamily: 'Roboto, sans-serif',
-    fontSize: '1.5vw',
-    fontWeight: 'bold',
-    marginLeft: '30.5vw',
-    marginTop: '4vh',
-    height: '5vh',
-    width: '9vw',
-    textTransform: 'none',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: 'rgb(27, 111, 129)'
-    }
+    color: 'white',
+    width: '-50vw',
+    height: '-100vh',
+    fontSize: '1.7vw',
+    zIndex: '1',
+    position: 'absolute',
+    marginLeft: '-50vw',
+    marginTop: '-100vh'
   }
 });
+
+// sign out styles
 
 var signOutButtonStyles = (0, _styles.makeStyles)({
   root: {
@@ -6289,6 +6286,42 @@ var singleVisitorSignOut = (0, _styles.makeStyles)({
     width: '34.5vw',
     marginLeft: '5vw',
     marginBottom: '17.5vh'
+  }
+});
+
+var signoutListContainer = (0, _styles.makeStyles)({
+  root: {
+    width: '34.5vw',
+    marginLeft: '5vw',
+    marginTop: 'auto',
+    zIndex: 2,
+    background: 'rgb(255,255,255, 0.8)',
+    borderRadius: '1.5vw',
+    overflow: 'scroll',
+    height: '42vh'
+  }
+});
+
+// sign in styles
+
+var signInButtonStyles = (0, _styles.makeStyles)({
+  root: {
+    background: 'white',
+    border: 0,
+    borderRadius: 9,
+    color: '#2C97AF',
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '1.5vw',
+    fontWeight: 'bold',
+    marginLeft: '30.5vw',
+    marginTop: '4vh',
+    height: '5vh',
+    width: '9vw',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: 'rgb(27, 111, 129)'
+    }
   }
 });
 
@@ -6384,20 +6417,8 @@ var selectStyle = (0, _styles.createMuiTheme)({
   }
 });
 
-var signoutListContainer = (0, _styles.makeStyles)({
-  root: {
-    width: '34.5vw',
-    marginLeft: '5vw',
-    marginTop: 'auto',
-    zIndex: 2,
-    background: 'rgb(255,255,255, 0.8)',
-    borderRadius: '1.5vw',
-    overflow: 'scroll',
-    height: '42vh'
-  }
-});
-
 module.exports = {
+  promoContainer: promoContainer,
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
   singleVisitorSignOut: singleVisitorSignOut,
@@ -40748,6 +40769,7 @@ function SignInForm() {
 
   var buttonStyle = (0, _utils.signInButtonStyles)();
   var menuStyles = (0, _utils.menuItemStyle)();
+  var promotionContainer = (0, _utils.promoContainer)();
 
   return _react2.default.createElement(
     'div',
@@ -40867,7 +40889,8 @@ function SignInForm() {
           { className: 'sign-out-text' },
           'or sign out instead'
         )
-      )
+      ),
+      _react2.default.createElement('img', { className: 'promo-image', src: 'deskRentalAd.png' })
     )
   );
 }
@@ -54662,7 +54685,8 @@ function SignOutForm() {
             })
           )
         ),
-        _react2.default.createElement(_BackArrow2.default, null)
+        _react2.default.createElement(_BackArrow2.default, null),
+        _react2.default.createElement('img', { className: 'promo-image', src: 'deskRentalAd.png' })
       )
     );
   } else {
