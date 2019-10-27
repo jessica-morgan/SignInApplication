@@ -65,7 +65,7 @@ export default function SignInForm () {
             </MuiThemeProvider>
           </FormControl>
           <br/>
-          {fullName.length && reason.length
+          {fullName.length && email.length && reason.length
             ? <Link style={{ textDecoration: 'none' }} to='/signinsuccess'><Button className={buttonStyle.root} onClick={() => newVisitorApi(fullName, email, reason) }>Sign in</Button></Link>
             : <div style={{ height: '9vh' }}></div>
           }
