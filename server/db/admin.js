@@ -1,30 +1,40 @@
-// const connection = require('./connection') Will need to update this when db is added
+const connection = require('./connection')
 const hash = require('../auth/hash')
 
 module.exports = {
-  getAdmin,
+  getAdminById,
+  getAdminByEmail,
   updateAdmin
 }
 
-function getAdmin (name, db = connection) {
+function getAdminById (id, conn) {
+  const db = conn || connection
+  return db('admin')
+    .select('id', 'name')
+    .where('id', id)
+    .first()
+}
+
+function getAdminByEmail (email, conn) {
+  const db = conn || connection
   return db('admin')
     .select()
-    .where('name', name)
+    .where('email', email)
     .first()
 }
 
 function updateAdmin (name, email, currentPassword, newPassword, db = connection) {
-  return getAdmin(name, db)
+  return getAdminByEmail(email, db)
     .then(user => {
       if (!user || !hash.verify(user.hash, currentPassword)) {
-        return Promise.reject(new Error('Username password match not found'))
+        return Promise.reject(new Error('name password match not found'))
       }
       return Promise.resolve(user)
     })
     .then(user => {
       const newPasswordHash = hash.generate(newPassword)
-      if (email !== user.email) Promise.reject(new Error('Username and ID mismatch'))
-      return db('users')
+      if (email !== user.email) Promise.reject(new Error('name and ID mismatch'))
+      return db('admin')
         .update({ name, email, hash: newPasswordHash })
         .where('id', user.id)
     })

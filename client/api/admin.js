@@ -1,22 +1,25 @@
 import request from 'superagent'
-import { saveUserToken } from '../lib/auth'
+// import { saveUserToken } from '../lib/auth'
 
-export function signIn (user) {
-  return request('post', '/auth/signin', user)
+const url = 'http://localhost:3000/api/v1/auth'
+
+export function signInAdminApi (email) {
+  return request('post', `${url}/signin`, email)
     .then(res => {
-      const token = saveUserToken(res.body.token)
-      getUserDetails(token.id)
+      // const token = saveUserToken(res.body.token)
+      // getAdminDetails(token.id)
+      return res.body
     })
     .catch((err) => {
       throw Error(err.message)
     })
 }
 
-export function getUserDetails (userId) {
-  return request('get', `/users/${userId}`)
+export function getAdminDetails (userId) {
+  return request('get', `${url}/admin/${userId}`)
     .then(res => {
-      const userDetails = res.body
-      return userDetails
+      const adminDetails = res.body
+      return adminDetails
     })
     .catch((err) => {
       throw Error(err.message)

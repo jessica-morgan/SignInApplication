@@ -1,18 +1,14 @@
 const express = require('express')
+const { getAdminByEmail, updateAdmin } = require('../db/admin')
+const token = require('../auth/token')
+const hash = require('../auth/hash')
+
 const router = express.Router()
-
-const {
-  getAdmin,
-  updateAdmin
-} = require('./db/admin')
-
-const token = require('./auth/token')
-const hash = require('./auth/hash')
 
 router.post('/signin', signInAdmin, token.issue)
 
 function signInAdmin (req, res, next) {
-  getAdmin(req.body.name)
+  getAdminByEmail(req.body.email)
     .then(user => {
       return user
       // || invalidCredentials(res)
