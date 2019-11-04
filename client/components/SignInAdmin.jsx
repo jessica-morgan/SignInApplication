@@ -43,7 +43,7 @@ export default function SignInAdmin () {
   // const [ admin, setAdmin ] = useGlobal('user')
 
   const signInReducer = (global, dispatch, action) => ({
-    user: action.user,
+    user: action.token,
     isAuthenticated: true
   })
 
@@ -63,12 +63,16 @@ export default function SignInAdmin () {
   // }
 
   const handleSubmit = (e) => {
+    const user = {
+      email,
+      password
+    }
     if (e) {
       e.preventDefault()
     }
-    signInAdminApi(email, password)
+    signInAdminApi(user)
       .then(body => {
-        getAdminToken(body)
+        getAdminToken(body.token)
       })
   }
 
