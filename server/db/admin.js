@@ -10,16 +10,16 @@ module.exports = {
 function getAdminById (id, conn) {
   const db = conn || connection
   return db('admin')
-    .select('id', 'name')
     .where('id', id)
+    .select()
     .first()
 }
 
 function getAdminByEmail (email, conn) {
   const db = conn || connection
   return db('admin')
-    .select()
     .where('email', email)
+    .select()
     .first()
 }
 

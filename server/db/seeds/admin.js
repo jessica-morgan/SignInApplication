@@ -4,7 +4,7 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('admin').insert([
-        { name: 'Carolyn', email: 'carolyn@devacademy.co.nz', hash: 'welcome' }
+        { id: 1, name: 'Carolyn', email: 'carolyn@devacademy.co.nz', hash: 'welcome' }
       ])
     })
 }

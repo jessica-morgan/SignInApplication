@@ -1,22 +1,27 @@
 const express = require('express')
-const { getAdminByEmail, updateAdmin } = require('../db/admin')
+const { getAdminByEmail, getAdminById, updateAdmin } = require('../db/admin')
 const token = require('../auth/token')
 const hash = require('../auth/hash')
 
 const router = express.Router()
 
-router.post('/signin', signInAdmin, token.issue)
+router.post('/admin/signin', signInAdmin, token.issue)
 
 function signInAdmin (req, res, next) {
-  getAdminByEmail(req.body.email)
+  const email = 'carolyn@devacademy.co.nz'
+  const password = 'welcome'
+  getAdminByEmail(email)
     .then(user => {
+      console.log('getEmail: ', user)
       return user
       // || invalidCredentials(res)
     })
-    .then(user => {
-      return user && hash.verify(user.hash, req.body.password)
-    })
+    // .then(user => {
+    //   console.log('then, email: ', user)
+    //   return user && hash.verify(user.hash, password)
+    // })
     .then(isValid => {
+      console.log('isValid: ', isValid)
       return isValid ? next() : invalidCredentials(res)
     })
     .catch((err) => {
@@ -33,9 +38,21 @@ function invalidCredentials (res) {
   })
 }
 
+router.get('/admin/:id', token.decode, (req, res) => {
+  const id = req.params.id
+  getAdminById(id)
+    .then((admin) => {
+      console.log(admin)
+      res.send(admin)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
 router.put('/update-admin', token.decode, (req, res) => {
-  const { name, email, currentPassword, newPassword } = req.body
-  updateAdmin(name, email, currentPassword, newPassword)
+  const { email, currentPassword, newPassword } = req.body
+  updateAdmin(email, currentPassword, newPassword)
     .then(() => {
       res.status(202).end()
     })

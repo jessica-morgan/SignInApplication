@@ -95,7 +95,7 @@ export default function SignInAdmin () {
               name='email'
               placeholder='Email'
               value={email}
-              required='true'
+              required={true}
               autoComplete='email'
               onChange={e => setEmail(e.target.value)}
             />
@@ -112,7 +112,7 @@ export default function SignInAdmin () {
                 placeholder='Password'
                 name='password'
                 value={password}
-                required='true'
+                required={true}
                 autoComplete='password'
                 onChange={e => setPassword(e.target.value)}
                 endAdornment= {
