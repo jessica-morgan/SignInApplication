@@ -1,6 +1,6 @@
 const hash = require('../../auth/hash')
 
-exports.seed = (knex, Promise) => {
+exports.seed = (knex) => {
   return Promise.all([
     hash.generate('welcome'),
     hash.generate('academy')
