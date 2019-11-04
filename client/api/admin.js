@@ -3,8 +3,8 @@ import { saveUserToken } from '../lib/auth'
 
 const url = 'http://localhost:3000/api/v1'
 
-export function signInAdminApi (email, password) {
-  return request('post', '/auth/admin/signin', { email, password })
+export function signInAdminApi (user) {
+  return request('post', '/auth/admin/signin', user)
     .then(res => {
       const token = saveUserToken(res.body.token)
       getAdminDetails(token.id)
@@ -27,7 +27,7 @@ export function getAdminDetails (userId) {
 }
 
 export function updateAdminApi (email, currentPassword, newPassword) {
-  return request('put', `${url}/update`, email, currentPassword, newPassword)
+  return request('put', '/auth/admin/update', email, currentPassword, newPassword)
     .then(res => {
       const token = saveUserToken(res.body.token)
       getAdminDetails(token.id)
