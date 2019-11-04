@@ -63,14 +63,10 @@ export default function SignInAdmin () {
   // }
 
   const handleSubmit = (e) => {
-    const user = {
-      email,
-      password
-    }
     if (e) {
       e.preventDefault()
     }
-    signInAdminApi(email)
+    signInAdminApi(email, password)
       .then(body => {
         getAdminToken(body)
       })

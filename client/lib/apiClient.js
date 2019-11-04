@@ -2,7 +2,7 @@ import request from 'superagent'
 
 import { isAuthenticated, getEncodedToken } from './auth'
 
-const baseUrl = 'http://localhost:3000/api/v1/auth'
+const baseUrl = 'http://localhost:3000/api/v1'
 
 export default function consume (method = 'get', endpoint, data = {}) {
   const payloadMethod = method.toLowerCase() === 'get' ? 'query' : 'send'

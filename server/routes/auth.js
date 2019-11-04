@@ -8,20 +8,18 @@ const router = express.Router()
 router.post('/admin/signin', signInAdmin, token.issue)
 
 function signInAdmin (req, res, next) {
-  const email = 'carolyn@devacademy.co.nz'
-  const password = 'welcome'
-  getAdminByEmail(email)
+  // const email = 'carolyn@devacademy.co.nz'
+  // const password = 'welcome'
+  getAdminByEmail(req.body.email, req.body.password)
     .then(user => {
-      console.log('getEmail: ', user)
       return user
       // || invalidCredentials(res)
     })
-    // .then(user => {
-    //   console.log('then, email: ', user)
-    //   return user && hash.verify(user.hash, password)
-    // })
+    .then(user => {
+      console.log('then, email: ', user)
+      return user && hash.verify(user.hash, req.body.password)
+    })
     .then(isValid => {
-      console.log('isValid: ', isValid)
       return isValid ? next() : invalidCredentials(res)
     })
     .catch((err) => {
@@ -42,7 +40,6 @@ router.get('/admin/:id', token.decode, (req, res) => {
   const id = req.params.id
   getAdminById(id)
     .then((admin) => {
-      console.log(admin)
       res.send(admin)
     })
     .catch(err => {
@@ -50,8 +47,9 @@ router.get('/admin/:id', token.decode, (req, res) => {
     })
 })
 
-router.put('/update-admin', token.decode, (req, res) => {
+router.put('/admin/update', token.decode, (req, res) => {
   const { email, currentPassword, newPassword } = req.body
+  // console.log('server-route: ', email, currentPassword, newPassword)
   updateAdmin(email, currentPassword, newPassword)
     .then(() => {
       res.status(202).end()

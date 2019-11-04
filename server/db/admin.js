@@ -23,7 +23,7 @@ function getAdminByEmail (email, conn) {
     .first()
 }
 
-function updateAdmin (name, email, currentPassword, newPassword, db = connection) {
+function updateAdmin (email, currentPassword, newPassword, db = connection) {
   return getAdminByEmail(email, db)
     .then(user => {
       if (!user || !hash.verify(user.hash, currentPassword)) {
@@ -32,10 +32,12 @@ function updateAdmin (name, email, currentPassword, newPassword, db = connection
       return Promise.resolve(user)
     })
     .then(user => {
+      console.log('db_verify: ', user, newPassword)
       const newPasswordHash = hash.generate(newPassword)
-      if (email !== user.email) Promise.reject(new Error('name and ID mismatch'))
+      if (email !== user.email) Promise.reject(new Error('email and ID mismatch'))
       return db('admin')
-        .update({ name, email, hash: newPasswordHash })
         .where('id', user.id)
+        .update({ email, hash: newPasswordHash })
+        // update just gives hash a null value
     })
 }
