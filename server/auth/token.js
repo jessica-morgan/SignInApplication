@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const verifyJwt = require('express-jwt')
 
 const db = require('../db/admin')
-// const jwtTestSecret = require('../../test/server/routes/jwt-test-secret.js')
+const jwtTestSecret = require('../../client/lib/jwt-test.secret')
 
 module.exports = {
   issue,
@@ -11,7 +11,7 @@ module.exports = {
 }
 
 function issue (req, res) {
-  db.getAdmin(req.body.name)
+  db.getAdminByEmail(req.body.email)
     .then(user => {
       const token = createToken(user, process.env.JWT_SECRET)
       res.json({
@@ -30,7 +30,7 @@ function decode (req, res, next) {
 function createToken (user, secret) {
   return jwt.sign({
     id: user.id,
-    name: user.name
+    email: user.email
   }, secret, {
     expiresIn: '1d'
   })

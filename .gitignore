@@ -4,3 +4,4 @@ bundle.*
 *.sqlite3
 yarn.lock
 package.lock
+.env

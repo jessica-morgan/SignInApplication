@@ -1,11 +1,13 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+
 import SignInForm from './SignInForm'
 import VisitorSignOut from './VisitorSignOut'
 import SignInSuccess from './SignInSuccess'
 import SignOutSuccess from './SignOutSuccess'
 
 import SignInAdmin from './SignInAdmin'
+import EditAdminDetails from './EditAdminDetails'
 
 const App = () => {
   return (
@@ -15,6 +17,7 @@ const App = () => {
       <Route path="/signinsuccess" component={SignInSuccess} />
       <Route path="/signoutsuccess" component={SignOutSuccess} />
       <Route path="/admin/signin" component={SignInAdmin} />
+      <Route path="/admin/account-edit" component={EditAdminDetails} />
     </div>
   )
 }
