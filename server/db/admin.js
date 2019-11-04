@@ -1,25 +1,17 @@
 const connection = require('./connection')
+
 const hash = require('../auth/hash')
 
-module.exports = {
-  getAdminById,
-  getAdminByEmail,
-  updateAdmin
-}
-
-function getAdminById (id, conn) {
-  const db = conn || connection
+function getAdminById (id, db = connection) {
   return db('admin')
     .where('id', id)
     .select()
     .first()
 }
 
-function getAdminByEmail (email, conn) {
-  const db = conn || connection
+function getAdminByEmail (email, db = connection) {
   return db('admin')
     .where('email', email)
-    .select()
     .first()
 }
 
@@ -40,4 +32,10 @@ function updateAdmin (email, currentPassword, newPassword, db = connection) {
         .update({ email, hash: newPasswordHash })
         // update just gives hash a null value
     })
+}
+
+module.exports = {
+  getAdminById,
+  getAdminByEmail,
+  updateAdmin
 }
