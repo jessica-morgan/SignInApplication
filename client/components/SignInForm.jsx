@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { signInButtonStyles, CustomDropDown, CustomInput, menuItemStyle, selectStyle } from '../utils'
 import { Link } from 'react-router-dom'
-import { newVisitorApi } from '../api/api'
+import { newVisitorApi } from '../api/visitors'
 
 export default function SignInForm () {
   const [fullName, setFullName] = useState('')
