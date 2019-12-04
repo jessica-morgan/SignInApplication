@@ -10,16 +10,18 @@ router.post('/admin/signin', signInAdmin, token.issue)
 function signInAdmin (req, res, next) {
   // const email = 'carolyn@devacademy.co.nz'
   // const password = 'welcome'
-  getAdminByEmail(req.body.email, req.body.password)
+  getAdminByEmail(req.body.email)
     .then(user => {
+      console.log('db_user: ', user)
       return user
       // || invalidCredentials(res)
     })
     .then(user => {
-      console.log('then, email: ', user)
+      console.log('then, password: ', user.hash)
       return user && hash.verify(user.hash, req.body.password)
     })
     .then(isValid => {
+      console.log(isValid)
       return isValid ? next() : invalidCredentials(res)
     })
     .catch((err) => {

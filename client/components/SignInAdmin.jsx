@@ -1,4 +1,4 @@
-import React, { useState, useDispatch } from 'reactn'
+import React, { useState, useGlobal } from 'reactn'
 
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
@@ -40,35 +40,24 @@ export default function SignInAdmin () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, toggleShowPassword] = useState(false)
-  // const [ admin, setAdmin ] = useGlobal('user')
-
-  const signInReducer = (global, dispatch, action) => ({
-    user: action.user,
-    isAuthenticated: true
-  })
-
-  const getAdminToken = useDispatch(signInReducer)
+  const [ setUser ] = useGlobal('user')
+  const [ setAuthentication ] = useGlobal('isAuthenticated')
 
   const buttonStyle = signInButtonStyles()
   const classes = useStyles()
 
-  // const handleSubmit = (e) => {
-  //   const user = {
-  //     email,
-  //     password
-  //   }
-  //   const goToHome = () => this.props.history.push('/')
-  //   signInAdmin(user, goToHome)
-  //   e.preventDefault()
-  // }
-
   const handleSubmit = (e) => {
+    const user = {
+      email,
+      password
+    }
     if (e) {
       e.preventDefault()
     }
-    signInAdminApi(email, password)
+    signInAdminApi(user)
       .then(body => {
-        getAdminToken(body)
+        setUser(body.token)
+        setAuthentication(true)
       })
   }
 
@@ -138,3 +127,11 @@ export default function SignInAdmin () {
     </div>
   )
 }
+
+// OPTIONAL REDUCER FOR REACTN
+// const signInReducer = (global, dispatch, action) => ({
+//   global.user = action.token,
+//   isAuthenticated: true
+// })
+
+// const getAdminToken = useDispatch(signInReducer)
