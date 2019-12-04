@@ -78,7 +78,7 @@ export default function Dashboard () {
               </ListItem>
 
             </div>
-          } else {
+          } else if (visitor.signOutTime === null) {
             return <div key={visitor.id}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
