@@ -3,7 +3,7 @@ const connection = require('./connection')
 // gets all visitors
 function getAllVisitors (db = connection) {
   return db('visitors')
-    .select()
+    .select('id', 'name', 'email', 'reason', 'sign_in_time as signInTime', 'sign_out_time as signOutTime')
 }
 
 // gets a particular user by email
