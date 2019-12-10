@@ -4,6 +4,7 @@ const connection = require('./connection')
 function getAllVisitors (db = connection) {
   return db('visitors')
     .select('id', 'name', 'email', 'reason', 'sign_in_time as signInTime', 'sign_out_time as signOutTime')
+    .orderBy('sign_in_time', 'desc')
 }
 
 // gets a particular user by email
