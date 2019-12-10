@@ -12,7 +12,7 @@ import { isToday, isYesterday, format } from 'date-fns'
 import LoadingIndicator from './LoadingIndicator'
 import BackArrow from './BackArrow'
 
-export default function SignOutForm () {
+export default function SignOutForm() {
   const [visitorList, setVisitorList] = useState('')
   const [showButton, setShowButton] = useState('')
   const [selectedVisitor, setSelectedVisitor] = useState('')
@@ -37,9 +37,9 @@ export default function SignOutForm () {
         {showButton ? <React.Fragment>
           <header>
             <h1 className='sign-out-page-text' style={{ fontSize: '3.6vw' }}>Thank you for visiting
-              <br/>Enspiral Dev Academy,
-              <br/>we hope to see you
-              <br/>again soon</h1>
+              <br />Enspiral Dev Academy,
+              <br />we hope to see you
+              <br />again soon</h1>
           </header>
           <ListItem className={singleVisitor.root} alignItems="flex-start">
             <ListItemAvatar>
@@ -67,7 +67,7 @@ export default function SignOutForm () {
           : <React.Fragment>
             <header>
               <h1 className='sign-out-page-text'>Sign out from
-                <br/>Enspiral Dev Academy.</h1>
+                <br />Enspiral Dev Academy.</h1>
             </header>
             <div className={listContainer.root}>
 
@@ -113,7 +113,7 @@ export default function SignOutForm () {
           </React.Fragment>
         }
         <BackArrow />
-        <img className='promo-image' src='deskRentalAd.png'/>
+        <img className='promo-image' src='deskRentalAd.png' />
       </div>
     </div>
   } else {
