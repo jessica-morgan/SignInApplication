@@ -144,6 +144,23 @@ const selectStyle = createMuiTheme({
   }
 })
 
+// admin visitor list style
+
+const adminVisitorListContainer = makeStyles({
+  root: {
+    width: '35.5vw',
+    height: '66vh',
+    margin: 'auto',
+    paddingTop: '3vh',
+    paddingLeft: '1vw',
+    zIndex: 2,
+    background: 'rgb(255,255,255, 0.8)',
+    borderRadius: '1vw',
+    overflowY: 'scroll',
+    overflowX: 'hidden'
+  }
+})
+
 module.exports = {
   signInButtonStyles: signInButtonStyles,
   signOutButtonStyles: signOutButtonStyles,
@@ -152,5 +169,6 @@ module.exports = {
   CustomInput: CustomInput,
   menuItemStyle: menuItemStyle,
   selectStyle: selectStyle,
-  signoutListContainer: signoutListContainer
+  signoutListContainer: signoutListContainer,
+  adminVisitorListContainer: adminVisitorListContainer
 }

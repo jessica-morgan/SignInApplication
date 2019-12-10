@@ -3,6 +3,11 @@ body {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 .page-background-full {
   background-color: rgb(44,151,175, 0.6);
   display: block;
@@ -191,4 +196,11 @@ body {
   margin: 0 auto; 
   padding-bottom: '18vh';
   text-align: center
+}
+
+.admin-vistor-list-header {
+  z-index: 2;
+  position: relative;
+  margin-top: -42vh;
+  text-align: center;
 }
